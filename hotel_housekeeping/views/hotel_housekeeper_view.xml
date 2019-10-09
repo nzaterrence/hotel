@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <!-- Form view of hotel housekeeper -->
+    <record id="view_hotel_housekeeper_form" model="ir.ui.view">
+        <field name="name">hotel.housekeeper.form</field>
+        <field name="model">hotel.housekeeper</field>
+        <field name="arch" type="xml">
+            <form string="Housekeeper">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object" groups="hr.group_hr_user" class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+                        </button>
+                    </div>
+                    <field name="image" widget="image" class="oe_avatar" options="{&quot;preview_image&quot;:&quot;image_medium&quot;}"/>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" required="1"/>
+                        <h1>
+                            <field name="name" placeholder="Housekeeper's Name" />
+                        </h1>
+                    </div>
+                    <field name="category_ids" widget="many2many_tags" placeholder="e.g. Part Time" options="{'no_create_edit': True}" groups="hr.group_hr_user"/>
+                    <notebook>
+                        <page name="public" string="Public Information">
+                            <group>
+                                <group string="Contact Information">
+                                    <field name="address_id" context="{'show_address': 1}" options="{&quot;always_reload&quot;: True, &quot;highlight_first_line&quot;: True}"/>
+                                    <field name="mobile_phone"/>
+                                    <field name="work_location"/>
+                                    <field name="work_email" widget="email"/>
+                                    <field name="work_phone"/>
+                                </group>
+                                <group string="Position">
+                                    <field name="department_id"/>
+                                    <field name="job_id"/>
+                                    <field name="parent_id"/>
+                                    <field name="coach_id"/>
+                                    <!-- <field name="calendar_id"/> -->
+                                </group>
+                            </group>
+                            <field name="notes" placeholder="Other Information ..." colspan="4"/>
+                        </page>
+                        <page name="personal_information" string="Personal Information" groups="hr.group_hr_user">
+                            <group>
+                                <group string="Citizenship &amp; Other Information">
+                                    <field name="country_id" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
+                                    <field name="identification_id" groups="hr.group_hr_user"/>
+                                    <field name="passport_id" groups="hr.group_hr_user"/>
+                                    <field name="bank_account_id" context="{'default_partner_id': address_home_id}"/>
+                                </group>
+                                <group string="Contact Information">
+                                    <field name="address_home_id" context="{'show_address': 1}" options="{&quot;always_reload&quot;: True, &quot;highlight_first_line&quot;: True}"/>
+                                </group>
+                                <group string="Status">
+                                    <field name="gender"/>
+                                    <field name="marital"/>
+                                </group>
+                                <group string="Birth">
+                                    <field name="birthday"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree view of hotel housekeeper -->
+    <record id="view_hotel_housekeeper_tree" model="ir.ui.view">
+        <field name="name">hotel.housekeeper.tree</field>
+        <field name="model">hotel.housekeeper</field>
+        <field name="arch" type="xml">
+            <tree string="Housekeeper">
+                <field name="name"/>
+                <field name="mobile_phone" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action for hotel housekeeper -->
+    <record id="action_hotel_housekeeper" model="ir.actions.act_window">
+        <field name="name">Housekeeper</field>
+        <field name="res_model">hotel.housekeeper</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_hotel_housekeeper" name="Housekeeper"
+        action="action_hotel_housekeeper" parent="hotel_housekeeping.menu_hotel_housekeeping"
+        sequence="21" groups="hotel.group_hotel_manager,hotel.group_hotel_user"/>
+
+</odoo>

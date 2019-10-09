@@ -1,0 +1,41 @@
+
+<odoo>
+	<record id="website.menu_home" model="website.menu">
+        <field name="name">Home</field>
+        <field name="url">/</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">10</field>
+    </record>
+    <record id="menu_book" model="website.menu">
+		<field name="name">Book</field>
+		<field name="url">/book</field>
+		<field name="parent_id" ref="website.main_menu"/>
+		<field name="sequence" type="int">20</field>
+	</record>
+	<record id="menu_gallary" model="website.menu">
+		<field name="name">Gallary</field>
+		<field name="url">/gallary</field>
+		<field name="parent_id" ref="website.main_menu"/>
+		<field name="sequence" type="int">30</field>
+	</record>
+	<record id="menu_about" model="website.menu">
+		<field name="name">About</field>
+		<field name="url">/about</field>
+		<field name="parent_id" ref="website.main_menu"/>
+		<field name="sequence" type="int">40</field>
+	</record>
+	
+	<!-- <record id="menu_book_submenu1" model="website.menu">
+		<field name="name">room-detail</field>
+		<field name="url">/book/room-detail</field>
+		<field name="parent_id" ref="hotel_website.menu_book"/>
+		<field name="sequence" type="int">70</field>
+	</record> -->
+	
+	<record id="website.menu_contactus" model="website.menu">
+        <field name="name">Contact us</field>
+        <field name="url">/contactus</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">60</field>
+    </record>
+</odoo>

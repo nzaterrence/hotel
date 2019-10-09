@@ -1,0 +1,253 @@
+<odoo>
+   <template id="hotel_room_detail_layout2" name="Hotel Book Layout">
+      <t t-call="website.layout">
+         <div class="rooms-and-suits-page  page-top-margin">
+            <div class="container-1270px">
+               <div class="heading-component clearfix ml-30">
+                  <h1>
+                     Our
+                     <span>Premier Rooms.</span>
+                  </h1>
+                  <!-- <h5 style="color:black">A premier experience of Oberoi hospitality.</h5> -->
+               </div>
+            </div>
+            <div class="container-1270px">
+               <div class="image-and-description-with-legend-attributes-option-2 clearfix">
+                  <div class="row">
+                     <div class="col-12 col-lg-8">
+                  <div>
+                     <div class="room-thumbnail-slides mb-50 ml-30">
+                        <div id="room-thumbnail--slide" class="carousel slide" data-ride="carousel">
+                           <t t-foreach="room" t-as="room">
+                              <div class="carousel-inner">
+                                 <t t-foreach="room.room_image_ids" t-as="image">
+                                    <div class="carousel-item">
+                                       <img t-att-src="image_data_uri(image.image)" t-if="image.image" alt="" class="d-block w-100" />
+                                    </div>
+                                 </t>
+                                 <!-- <div class="carousel-item">
+                                 <img src="/hotel_website/static/src/image/room-detail1.png" class="d-block w-100" alt="" />
+                              </div>
+                              <div class="carousel-item">
+                                 <img src="/hotel_website/static/src/image/room-detail1.png" class="d-block w-100" alt="" />
+                              </div>
+                              <div class="carousel-item">
+                                 <img src="/hotel_website/static/src/image/room-detail1.png" class="d-block w-100" alt="" />
+                              </div>
+                              <div class="carousel-item">
+                                 <img src="/hotel_website/static/src/image/room-detail1.png" class="d-block w-100" alt="" />
+                              </div> -->
+                              </div>
+                           </t>
+                            <a class="carousel-control-prev" href="#room-thumbnail--slide" data-slide="prev">
+                     <span class="carousel-control-prev-icon" />
+                  </a>
+                  <a class="carousel-control-next" href="#room-thumbnail--slide" data-slide="next">
+                     <span class="carousel-control-next-icon" />
+                  </a>
+                        </div>
+                     </div>
+                  </div>
+                   <div class="ml-30">
+                     <p t-esc="room.description" />
+                     <ul class="d-details-wrap">
+                        <li>
+                           <span class="d-heading">
+                              <strong>View</strong>
+                           </span>
+                           <span class="d-details">Gardens</span>
+                        </li>
+                        <li>
+                           <span class="d-heading">
+                              <strong>Bed Type</strong>
+                           </span>
+                           <span class="d-details room-size">King size</span>
+                        </li>
+                        <li>
+                           <span class="d-heading">
+                              <strong>Room Size</strong>
+                           </span>
+                           <span class="d-details room-size">600 square feet (56 square metres)</span>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="col-lg-4">
+                  <div>
+                     <!-- Hotel Reservation Area -->
+                     <div class="hotel-reservation--area mb-100">
+                        <form action="#" method="post">
+                            <div class="form-group mb-30">
+                                <label for="checkInDate">Date</label>
+                                <div class="input-daterange" id="datepicker">
+                                    <div class="row no-gutters">
+                                        <div class="col-6">
+                                            <!-- <input type="text" class="input-small form-control" id="checkInDate" name="checkInDate" placeholder="Check In"/> -->
+                                            <label for="checkIn">Check In</label>
+                                <!--  <input type="date" class="form-control" id="checkIn" name="checkin-date" placeholder="Check In" /> -->
+                                <div class="input-group date" id="datepickercheckin" data-target-input="nearest">
+                                    <input type="text" class="form-control datepicker-input datepicker" data-target="#datepickercheckin" name="arrival_date" placeholder="Arraival Date"/>
+                                    <span class="input-group-addon" data-target="#datepickercheckin" data-toggle="datepicker">
+                                      <span class="fa fa-calendar"></span>
+                                    </span>
+                                 </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <!-- <input type="text" class="input-small form-control" name="checkOutDate" placeholder="Check Out"/> -->
+                                                               <label for="checkout">Check Out</label>
+                                 <!-- <input type="date" class="form-control" id="checkOut" name="checkout-date" placeholder="Check Out" /> -->
+                                   <div class="input-group date" id="datepickercheckout" data-target-input="nearest">
+                                    <input type="text" class="form-control datepicker-input datepicker" data-target="#datepickercheckout" name="departure_date" placeholder="Departure Date"/>
+                                    <span class="input-group-addon" data-target="#datepickercheckout" data-toggle="datepicker">
+                                      <span class="fa fa-calendar"></span>
+                                    </span>
+                                 </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mb-30">
+                                <label for="guests">Guests</label>
+                                <div class="row">
+                                    <div class="input-group col-5">
+                                        <select name="adults" id="guests" class="form-control">
+                                            <option value="adults">Adults</option>
+                                            <option value="01">01</option>
+                                            <option value="02">02</option>
+                                            <option value="03">03</option>
+                                            <option value="04">04</option>
+                                            <option value="05">05</option>
+                                            <option value="06">06</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group col-5">
+                                        <select name="children" id="children" class="form-control">
+                                            <option value="children">Children</option>
+                                            <option value="01">01</option>
+                                            <option value="02">02</option>
+                                            <option value="03">03</option>
+                                            <option value="04">04</option>
+                                            <option value="05">05</option>
+                                            <option value="06">06</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+              <!--               <div class="form-group mb-50">
+                                <div class="slider-range">
+                                    <div class="range-price">Max Price: $0 - $3000</div>
+                                    <div data-min="0" data-max="3000" data-unit="$" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="0" data-value-max="3000" data-label-result="Max Price: ">
+                                        <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
+                                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+                                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="form-group">
+                                <button type="submit" class="btn hotel-btn w-100">Check Availablity</button>
+                            </div>
+                        </form>
+                    </div>
+                  </div>
+               </div>
+            </div>
+               </div>
+            </div>
+            <div class="container-1270px">
+               <!-- <div class="row"> -->
+               <div class="room-service ml-30 mt-15 mb-50">
+                  <h4>Room Services</h4>
+                  <ul>
+                     <li>
+                        <img src="/hotel_website/static/src/image/hotel-icons/icon1.png" alt="" />
+                        Air Conditioning
+                     </li>
+                     <li>
+                        <img src="/hotel_website/static/src/image/hotel-icons/icon2.png" alt="" />
+                        Free drinks
+                     </li>
+                     <li>
+                        <img src="/hotel_website/static/src/image/hotel-icons/icon3.png" alt="" />
+                        Restaurant quality
+                     </li>
+                     <li>
+                        <img src="/hotel_website/static/src/image/hotel-icons/icon4.png" alt="" />
+                        Cable TV
+                     </li>
+                     <li>
+                        <img src="/hotel_website/static/src/image/hotel-icons/icon5.png" alt="" />
+                        Unlimited Wifi
+                     </li>
+                     <li>
+                        <img src="/hotel_website/static/src/image/hotel-icons/icon6.png" alt="" />
+                        Service 24/24
+                     </li>
+                  </ul>
+               </div>
+               <!--  <div class="contact-details-box col-12 col-md-4">
+                                 <h4>Contact Us</h4>
+                                 <div class="contact-details-info">
+                                     <table cellpadding="0" cellspacing="0">
+                                         <tbody><tr>
+                                             <td><strong>E-mail</strong></td>
+                                             <td><a href="mailto:reservations@oberoigroup.com">reservations@oberoigroup.com</a></td>
+                                         </tr>
+                                         <tr>
+                                             <td><strong>Toll Free</strong></td>
+                                             <td>1800-11-2030</td>
+                                         </tr>
+                                         <tr>
+                                             <td><strong>Phone No.</strong></td>
+                                             <td>+91 294 2433300</td>
+                                         </tr>
+                                     </tbody></table>
+                                 </div>
+                             </div> -->
+            </div>
+            <div class="container-1270px " style="border-top:2px solid #ebebeb">
+               <div class="clearfix slider-style1-wrap mt-15">
+                  <h4 class="col-md-8" style="float:left;">
+                     <em>More</em>
+                     rooms.
+                  </h4>
+                  <a href="/book" class="btn-style2 col-md-3" style="float:right;text-align:right;">View All Rooms</a>
+               </div>
+               <div class="room-detail-slide">
+                  <div class="carousel slide pl-50" data-ride="carousel" id="quote-carousel">
+                     <!-- Carousel Slides / Quotes -->
+                     <div class="carousel-inner text-center">
+                        <!-- Quote 1 -->
+                        <t t-foreach="room_type" t-as="room">
+                           <div class="carousel-item">
+                              <!-- Single Room Slide -->
+                              <div class="home-room-info col-md-3">
+                                 <div class="room-detail-slide-img">
+                                    <img t-att-src="image_data_uri(room.image_medium)" t-if="room.image_medium" alt="" />
+                                 </div>
+                                 <h5 class="text-center" t-esc="room.name" />
+                                 <div class="ml-15 mb-15 home-room-content">
+                                    <span t-esc="room.description" />
+                                 </div>
+                                 <div class="mb-15">
+                                    <a href="/book">
+                                       <h6 class="fa fa-chevron-right" style="font-size: 14px;">Explore</h6>
+                                    </a>
+                                 </div>
+                              </div>
+                           </div>
+                        </t>
+                     </div>
+                     <!-- Carousel Buttons Next/Prev -->
+                     <a data-slide="prev" href="#quote-carousel" class="carousel-control-prev">
+                        <i class="fa fa-chevron-left" />
+                     </a>
+                     <a data-slide="next" href="#quote-carousel" class="carousel-control-next">
+                        <i class="fa fa-chevron-right" />
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </t>
+   </template>
+</odoo>

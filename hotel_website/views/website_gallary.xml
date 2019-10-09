@@ -1,0 +1,9 @@
+<odoo>
+	<template id="hotel_gallary_layout" name="Hotel Gallary Layout" >
+		<t t-call="website.layout">
+        	<div id="wrap">
+        		Hotel Gallary
+        	</div>
+    	</t>
+    </template>      
+</odoo>

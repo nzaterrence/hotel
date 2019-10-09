@@ -1,0 +1,13 @@
+<odoo>
+        <!-- Scheduler For Hotel Room -->
+    <record model="ir.cron" id="update_product_category_cron">
+        <field name="name">Update Product Category</field>
+        <field name="model_id" ref="model_hotel_room"/>
+        <field name="state">code</field>
+        <field name="code">model.cron_update_category()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">minutes</field>
+        <field name="numbercall">1</field>
+        <field name="doall" eval="False" />
+    </record>
+</odoo>

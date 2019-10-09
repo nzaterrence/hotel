@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hms_dashboard_manager,hms.dashboard_manager,model_hms_dashboard,hotel.group_hotel_manager,1,1,1,1
+access_hms_dashboard_user,hms.dashboard_user,model_hms_dashboard,hotel.group_hotel_user,1,0,0,0

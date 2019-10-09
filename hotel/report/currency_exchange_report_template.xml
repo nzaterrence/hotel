@@ -1,0 +1,185 @@
+<odoo>
+
+    <template id="report_currency_exchange">
+        <t t-call="web.html_container">
+            <t t-as="o" t-foreach="docs">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="mt32 mb32">
+                              <center><h3>Encashment Certificate</h3></center>
+                        </div>
+                        <br />
+                        <table width="100%">
+                            <tr>
+                                <td style="text-align:left;" width="50%">
+                                    <strong>Serial No. :</strong>
+                                    <span t-field="o.name" />
+                                </td>
+                                <td style="text-align:right;" width="50%">
+                                    <strong>Date :</strong>
+                                    <span t-field="o.today_date" />
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td style="text-align:left;" width="50%">
+                                    <strong>Room No. :</strong>
+                                    <span t-field="o.room_number" />
+                                </td>
+                                <td />
+                            </tr>
+                        </table>
+                        <br />
+                        <p>
+                            We hereby certify that we have purchased today
+                            foreign currency
+                            from Mr./Mrs.&#160;&#160;
+                            <strong>
+                                <span t-field="o.guest_name" />
+                            </strong>
+                            &#160;
+                            in
+                            <strong>
+                                <span t-field="o.input_curr.name" />
+                            </strong>
+                            currency and paid net amount in
+                            <strong>
+                                <span t-field="o.out_curr.name" />
+                            </strong>
+                            currency .
+                            Details are given below:
+                        </p>
+                        <br />
+                        <p>
+                            A. Details of Foreign Currency Notes Purchased
+                        </p>
+                        <table class="table table-bordered" width="100%">
+                            <tr>
+                                <th style="text-align:center;" width="25%">
+                                    <strong>Currency Purchased(indicating cash)
+                                    </strong>
+                                </th>
+                                <th style="text-align:center;" width="25%">
+                                    <strong>Amount</strong>
+                                </th>
+                                <th style="text-align:center;" width="25%">
+                                    <strong>Rate(per unit)</strong>
+                                </th>
+                                <th style="text-align:center;" width="25%">
+                                    <strong>Equivalent Amount</strong>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">
+                                    <span t-field="o.type" />
+                                </td>
+                                <td style="text-align:center;">
+                                    <span t-field="o.in_amount" />
+                                    &#160;
+                                    <span t-field="o.input_curr.name" />
+                                </td>
+                                <td style="text-align:center;">
+                                    <span t-field="o.rate" />
+                                </td>
+                                <td style="text-align:center;">
+                                    <span t-field="o.out_amount" />
+                                    &#160;
+                                    <span t-field="o.out_curr.name" />
+                                </td>
+                            </tr>
+                        </table>
+                        <br />
+                        <table width="100%">
+                            <tr>
+                                <td width="60%" />
+                                <td style="text-align:left;" width="20%">
+                                    <strong>Subtotal :</strong>
+                                </td>
+                                <td style="text-align:right;" width="20%">
+                                    <span t-field="o.out_amount" />
+                                    <span t-field="o.out_curr.name" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="60%" />
+                                <td style="text-align:left;" width="20%">
+                                    <strong style="margin-left:40px">Tax :
+                                    </strong>
+                                </td>
+                                <td style="text-align:right;" width="20%">
+                                    <span t-field="o.tax" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="60%" />
+                                <td style="text-align:left;" width="20%">
+                                    <strong style="margin-left:28px">Total :
+                                    </strong>
+                                </td>
+                                <td style="text-align:right;" width="20%">
+                                    <span t-field="o.total" />
+                                    <span t-field="o.out_curr.name" />
+                                </td>
+                            </tr>
+                        </table>
+                        <br />
+                        <br />
+                        <table width="100%">
+                            <tr>
+                                <td style="text-align:left;" width="50%">
+                                    <strong>
+                                        .............................................
+                                    </strong>
+                                </td>
+                                <td style="text-align:right;" width="50%">
+                                    <strong>
+                                        .............................................
+                                    </strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:left;" width="50%">
+                                    <strong>Guest signature</strong>
+                                </td>
+                                <td style="text-align:right;" width="50%">
+                                    <strong>Manager signature</strong>
+                                </td>
+                            </tr>
+                        </table>
+                        <br />
+                        <br />
+                        <div align="left" class="row">
+                            <span>
+                                <b>Kind Regards</b>
+                            </span>
+                            ,
+                            <br />
+                            <b>Reservations Team</b>
+                            <br />
+                            [
+                            <span t-field="o.hotel_id.name" />
+                            ]
+                            <br />
+                            <span t-field="o.hotel_id.partner_id.street" />
+                            <br />
+                            <span t-field="o.hotel_id.partner_id.city" />
+                            ,
+                            <br />
+                            <span t-field="o.hotel_id.partner_id.country_id.name" />
+                            <br />
+                            <span t-field="o.hotel_id.partner_id.website" />
+                            <br />
+                        </div>
+                        <br />
+                        <p align="center">
+                            * Valid for three months from the date of purchase
+                            of
+                            foreign currency *
+                        </p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

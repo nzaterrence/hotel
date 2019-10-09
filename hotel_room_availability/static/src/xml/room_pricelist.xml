@@ -1,0 +1,29 @@
+<templates>
+    <t t-name="hotel_room_availability.RoomPricelist">
+        <div class="oe_room_availability_weekly">
+            <table class="table table-condensed table-responsive">
+                <tr class="default-tr">
+                    <th class="oe_timesheet_first_col oe_postion" colspan="3"/>
+                    <t t-foreach="widget.dates" t-as="date">
+                        <th t-att-class="'oe_timesheet_weekly_date_head' + (moment().format('DD-MM-YYYY') === moment(date).format('DD-MM-YYYY') ? ' oe_timesheet_weekly_today' : '')">
+                            <t t-esc="moment(date).format('ddd')"/><br/>
+                            <t t-esc="moment(date).format('MMM DD')"/>
+                        </th>
+                    </t>
+                    <th class="oe_timesheet_weekly_date_head">Total</th>
+                </tr>
+                <t t-foreach="widget.rooms_types" t-as="room">
+                    <tbody class="tbody_group">
+                        <tr t-att-caption="room.name" t-att-id="'room_name-'+room.id" t-att-data-room="room.id" t-att-class="widget.mode=='edit' ? 'input-tr room_name' : 'value-tr room_name'">
+                            <th class="oe_timesheet_weekly_account oe_postion oe_whitesmoke" t-att-id="'room_caption-'+room.id" colspan="2">
+                                <a href="javascript:void(0)" t-att-data-id="JSON.stringify(room.id)"><t t-esc="room.name"/></a>
+                            </th>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </t>
+            </table>
+        </div>
+    </t>
+</templates>

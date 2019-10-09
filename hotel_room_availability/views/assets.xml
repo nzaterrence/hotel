@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="backend_room_availability_assets" name="room availabilityassets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="/hotel_room_availability/static/src/less/room_availability.less"/>
+            <script type="text/javascript" rel="preload" src="/hotel_room_availability/static/src/js/room_availability.js"></script>
+            <script type="text/javascript" src="/hotel_room_availability/static/src/js/room_pricelist.js"></script>
+        </xpath>
+    </template>
+</odoo>

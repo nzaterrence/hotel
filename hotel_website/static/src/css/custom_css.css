@@ -1,0 +1,467 @@
+/**
+ * General variables
+ */
+/**
+ * General configs
+ */
+* {
+    box-sizing: border-box;
+}
+button {
+    background-color: transparent;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+}
+
+input {
+    background-color: transparent;
+    padding: 0;
+    border: 0;
+    outline: 0;
+}
+
+input[type="submit"] {
+    cursor: pointer;
+}
+
+input::placeholder {
+    font-size: .85rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+    letter-spacing: .1rem;
+    color: #ccc;
+}
+
+/**
+ * Bounce to the left side
+ */
+@keyframes bounceLeft {
+    0% {
+        transform: translate3d(100%, -50%, 0);
+    }
+    50% {
+        transform: translate3d(-30px, -50%, 0);
+    }
+    100% {
+        transform: translate3d(0, -50%, 0);
+    }
+}
+
+/**
+ * Bounce to the left side
+ */
+@keyframes bounceRight {
+    0% {
+        transform: translate3d(0, -50%, 0);
+    }
+    50% {
+        transform: translate3d(calc(100% + 30px), -50%, 0);
+    }
+    100% {
+        transform: translate3d(100%, -50%, 0);
+    }
+}
+
+/**
+ * Show Sign Up form
+ */
+@keyframes showSignUp {
+    100% {
+        opacity: 1;
+        visibility: visible;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+/**
+ * Page background
+ */
+.user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background: url("/hotel_website/static/src/image/banner-03.jpg") no-repeat center;
+    background-size: cover;
+}
+
+.user_options-container {
+    position: relative;
+    width: 80%;
+}
+
+.user_options-text {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: rgba(34, 34, 34, 0.85);
+    border-radius: 3px;
+}
+
+/**
+ * Registered and Unregistered user box and text
+ */
+.user_options-registered,
+.user_options-unregistered {
+    width: 50%;
+    padding: 75px 45px;
+    color: #fff;
+    font-weight: 300;
+}
+
+.user_registered-title,
+.user_unregistered-title {
+    margin-bottom: 15px;
+    font-size: 1.66rem;
+    line-height: 1em;
+}
+
+.user_unregistered-text,
+.user_registered-text {
+    font-size: .83rem;
+    line-height: 1.4em;
+}
+
+.user_registered-login,
+.user_unregistered-signup {
+    margin-top: 30px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 10px 30px;
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 1em;
+    letter-spacing: .2rem;
+    transition: background-color .2s ease-in-out, color .2s ease-in-out;
+}
+
+.user_registered-login:hover,
+.user_unregistered-signup:hover {
+    color: rgba(34, 34, 34, 0.85);
+    background-color: #ccc;
+}
+
+/**
+ * Login and signup forms
+ */
+.user_options-forms {
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    width: calc(50% - 30px);
+    min-height: 420px;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    transform: translate3d(100%, -50%, 0);
+    transition: transform .4s ease-in-out;
+}
+
+.user_options-forms .user_forms-login {
+    transition: opacity .4s ease-in-out, visibility .4s ease-in-out;
+}
+
+.user_options-forms .forms_title {
+    margin-bottom: 45px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1em;
+    text-transform: uppercase;
+    color: #e8716d;
+    letter-spacing: .1rem;
+}
+
+.user_options-forms .forms_field:not(:last-of-type) {
+    margin-bottom: 20px;
+}
+
+.user_options-forms .forms_field-input {
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    padding: 6px 20px 6px 6px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: gray;
+    letter-spacing: .1rem;
+    transition: border-color .2s ease-in-out;
+}
+
+.user_options-forms .forms_field-input:focus {
+    border-color: gray;
+}
+
+.user_options-forms .forms_buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 35px;
+}
+
+.user_options-forms .forms_buttons-forgot {
+    font-family: "Montserrat", sans-serif;
+    letter-spacing: .1rem;
+    color: #ccc;
+    text-decoration: underline;
+    transition: color .2s ease-in-out;
+}
+
+.user_options-forms .forms_buttons-forgot:hover {
+    color: #b3b3b3;
+}
+
+.user_options-forms .forms_buttons-action {
+    background-color: #e8716d;
+    border-radius: 3px;
+    padding: 10px 35px;
+    font-size: 1rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    transition: background-color .2s ease-in-out;
+}
+
+.user_options-forms .forms_buttons-action:hover {
+    background-color: #e14641;
+}
+
+.user_options-forms .user_forms-signup,
+.user_options-forms .user_forms-login {
+    position: absolute;
+    top: 70px;
+    left: 40px;
+    width: calc(100% - 80px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .4s ease-in-out, visibility .4s ease-in-out, transform .5s ease-in-out;
+}
+
+.user_options-forms .user_forms-signup {
+    transform: translate3d(120px, 0, 0);
+}
+
+.user_options-forms .user_forms-signup .forms_buttons {
+    justify-content: flex-end;
+}
+
+.user_options-forms .user_forms-login {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+    visibility: visible;
+}
+
+/**
+ * Triggers
+ */
+.user_options-forms.bounceLeft {
+    animation: bounceLeft 1s forwards;
+}
+
+.user_options-forms.bounceLeft .user_forms-signup {
+    animation: showSignUp 1s forwards;
+}
+
+.user_options-forms.bounceLeft .user_forms-login {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate3d(-120px, 0, 0);
+}
+
+.user_options-forms.bounceRight {
+    animation: bounceRight 1s forwards;
+}
+
+/**
+ * Responsive 990px
+ */
+@media screen and (max-width: 990px) {
+    .user_options-forms {
+        min-height: 350px;
+    }
+    .user_options-forms .forms_buttons {
+        flex-direction: column;
+    }
+    .user_options-forms .user_forms-login .forms_buttons-action {
+        margin-top: 30px;
+    }
+    .user_options-forms .user_forms-signup,
+    .user_options-forms .user_forms-login {
+        top: 40px;
+    }
+    .user_options-registered,
+    .user_options-unregistered {
+        padding: 50px 45px;
+    }
+}
+
+[type="date"] {
+  background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
+}
+[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+#mySlider {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+
+    .singleSlide {
+
+        background-size: cover;
+        height: 300px;
+        position: absolute;
+        left: 100%;
+        width: 100%;
+        top: 0px;
+    }
+    
+    .slideOverlay {
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 50px;
+    }
+    
+    
+
+#sliderNav {
+    position: relative;
+    top: -175px;
+}
+
+    #sliderNav:hover { cursor: pointer;     }
+
+    #sliderPrev {
+        position: relative;
+        float: left;
+        left: 50px;
+    }
+
+    #sliderNext {
+        position: relative;
+        float: right;
+        right: 50px;
+    }
+
+
+    
+@-webkit-keyframes slideIn {
+    100% { left: 0; }
+}
+
+@keyframes slideIn {
+    100% { left: 0; }
+}
+
+.slideInRight {
+    left: -100%;
+    -webkit-animation: slideIn 1s forwards;
+    animation: slideIn 1s forwards;
+}
+
+.slideInLeft {
+    left: 100%;
+    -webkit-animation: slideIn 1s forwards;
+    animation: slideIn 1s forwards;
+}
+
+@-webkit-keyframes slideOutLeft {
+    100% { left: -100%; }
+}
+
+@keyframes slideOutLeft {
+    100% { left: -100%; }
+}
+
+.slideOutLeft {
+    -webkit-animation: slideOutLeft 1s forwards;
+    animation: slideOutLeft 1s forwards;
+}
+
+@-webkit-keyframes slideOutRight {
+    100% { left: 100%; }
+}
+
+@keyframes slideOutRight {
+    100% { left: 100%; }
+}
+
+.slideOutRight {
+    -webkit-animation: slideOutRight 1s forwards;
+    animation: slideOutRight 1s forwards;
+}
+
+/*js for homepage button check availability*/
+
+.overlay_popup {
+  display: none;
+  padding: 10px;
+    width: 300px;
+    height: 200px;
+    position: fixed;
+    top: 50%; 
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -150px;
+    background-color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 11; /* 1px higher than the overlay layer */
+}
+
+/*testimonials*/
+.testimonials {
+
+    position: relative;
+    display: block;
+    width: 100%;
+    min-height: 226px;
+    list-style: none;
+    padding: 0;
+    margin-top: 100px;
+    display: inline-block;
+    background-color: white;
+    border: solid 1px #bdbdbd;
+    }
+.testimonials img {
+    height: 70px;
+    width: 70px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: 0px 0px 0px 15px #fff;
+    background-color: #fff;
+    transition: box-shadow 0.3s linear;
+}
+
+.testimonials  p {
+    position: absolute;
+    width: 70%;
+    text-align: center;
+    top: 50px;
+    left: 50%;
+    transform: translatex(-50%);
+    font-size: 15px;
+}
+
+.testimonials  h1 {
+    position: absolute;
+    text-decoration: bold;
+    bottom: 10px;
+    left: 50%;
+    transform: translatex(-50%);
+    font-size: 17px;
+}
+
+

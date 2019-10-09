@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <template id="assets_backend" name="HMS assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <!-- <link rel="stylesheet" href="/hms_dashboard/static/src/css/dataTables.bootstrap4.css"/> -->
+                <!-- <link rel="stylesheet" href="/hms_dashboard/static/src/css/dataTables.bootstrap4.min.css"/> -->
+                <!-- <link rel="stylesheet" href="/hms_dashboard/static/src/css/sb-admin.css"/> -->
+                <!-- <link rel="stylesheet" href="/hms_dashboard/static/src/css/bootstrap.css"/> -->
+
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+                <!-- Fonts CDN -->
+                <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet"/>
+
+                <!-- <script type="text/javascript" src="/hms_dashboard/static/src/js/Chart.bundle.js"></script> -->
+                <!-- <script type="text/javascript" src="/hms_dashboard/static/src/js/Chart.bundle.min.js"></script> -->
+                <!-- <script type="text/javascript" src="/hms_dashboard/static/src/js/Chart.js"></script> -->
+                <!-- <script type="text/javascript" src="/hms_dashboard/static/src/js/Chart.min.js"></script> -->
+                <!-- <script type="text/javascript" src="/hms_dashboard/static/src/js/dataTables.bootstrap4.js"></script> -->
+                <!-- <script type="text/javascript" src="/hms_dashboard/static/src/js/dataTables.bootstrap4.min.js"></script> -->
+                <!-- <script type="text/javascript" src="/hms_dashboard/static/src/js/gulpfile.js"></script> -->
+                <!-- <script type="text/javascript" src="/hms_dashboard/static/src/js/jquery.dataTables.js"></script> -->
+                <!-- <script type="text/javascript" src="/hms_dashboard/static/src/js/jquery.dataTables.min.js"></script> -->
+                <!-- <script type="text/javascript" src="/hms_dashboard/static/src/js/sb-admin.js"></script> -->
+                <!-- <script type="text/javascript" src="/hms_dashboard/static/src/js/sb-admin.min.js"></script> -->
+                <script type="text/javascript" src="/hms_dashboard/static/src/js/hms_dashboard.js"></script>
+            </xpath>
+        </template>
+    </data>
+</odoo>

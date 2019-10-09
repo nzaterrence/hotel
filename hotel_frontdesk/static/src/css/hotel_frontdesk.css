@@ -1,0 +1,160 @@
+.frontdesk-container {
+    max-height: 1000px;
+    scroll-behavior: smooth;
+}
+
+.frontdesk_filter {
+    margin: 5px;
+}
+
+.title-bar {
+    fill: #5cb4bb !important;
+    stroke-width: 1px !important;
+    stroke: #fff !important;
+}
+
+.title-bar-label {
+    fill: #fff !important;
+    font-weight: bold !important;
+}
+
+.title-bar:hover {
+    fill: #b8c2cc9e !important;
+}
+
+.title-bar-group {
+    pointer-events: none !important;
+    user-select: none !important;
+}
+
+.frontdesk_filter_btn {
+    background-color: #006169;
+    color: #fff;
+}
+
+.frontdesk_filter_btn:hover {
+    color: #fff !important;
+}
+
+.frontdesk_filter_btn:focus {
+    color: #fff !important;
+}
+
+.frontdesk_filter_btn:active {
+    color: #fff !important;
+}
+
+.details-container {
+    padding: 10px !important;
+    width: max-content !important;
+}
+
+.state_assigned {
+    fill: #F93943 !important;
+}
+
+.label-assigned {
+    background-color: #F93943;
+}
+
+.state_reserved {
+    fill: #f5c34d !important;
+}
+
+.label-reserved {
+    background-color: #f5c34d;
+}
+
+.state_done {
+    fill: #A8C686 !important;
+}
+
+.label-done {
+    background-color: #A8C686;
+}
+
+.main-title-label {
+    font-size: 13px !important;
+    text-transform: uppercase !important;
+}
+
+.main-title-bar {
+    fill: #2f94a5 !important;
+}
+
+.data_changed_source {
+    text-decoration: line-through;
+    color: #8a6d3b;
+}
+
+.data_changed_dest {
+    color: #337ab7;
+}
+
+.date_change_wizard {
+    color: #777;
+}
+
+.amount_change_src {
+    background-color: #d9edf7;
+    color: #000;
+    padding: 10px;
+    border-radius: 5px;
+    border-top: 1 solid #eee;
+    text-decoration: line-through;
+}
+
+.amount_change_dest {
+    color: #fff;
+    background-color: #337ab7;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.change_wizard_block {
+    border-top: 1px solid #eee;
+    margin: 0 auto;
+    width: 80%;
+    padding: 10px;
+    letter-spacing: 0.1em;
+}
+
+.data_changed_dest_sub {
+    letter-spacing: 1px;
+}
+
+.font-bold {
+    font-weight: bold !important;
+}
+
+.mr-25 {
+    margin-right: 25% !important;
+}
+
+.ml-10 {
+    margin-left: 10% !important;
+}
+
+.float-left {
+    float: left !important;
+}
+
+.float-right {
+    float: right !important;
+}
+
+.frontdesk_info {
+    display: block;
+    padding: 10px;
+    font-size: 1.3em;
+}
+
+span.label {
+    padding: 5px;
+    color: #fff;
+    border-radius: 5px;
+}
+
+/* .modal-body {
+    display: flex;
+} */

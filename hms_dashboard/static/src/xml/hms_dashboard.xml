@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="hms_template" xml:space="preserve">
+    <!-- This template is the ribbon at the top of the school dashboard that adds some figures to it. We call this rubbon the "SchoolDashboard". -->
+    <t t-name="hms_dashboard.HMSDashboard">
+        <div id="content-wrapper">
+            <div class="container-fluid hms-dashboard">
+
+                <!-- Icon Cards-->
+                <div class="row">
+                    <div class="col-xl-3 col-sm-6 mb-3 col-md-3" style="padding-top:2%;">
+                        <div class="card text-white dashboard-card gradient-blackberry o-hidden">
+                            <div class="card-body hms-card-body">
+                                <div class="card-body-icon hms-card-icon">
+                                    <i class="fa fa-user-plus"></i>
+                                </div>
+                                <div class="col-md-6 btn_today_booking text-center card-sub-body" style="cursor: pointer;" role="button">
+                                    <div class="">
+                                        <h1 class="no-margin">
+                                            <t t-esc="widget.today_reservation_count_id"></t>
+                                        </h1>
+                                    </div>
+                                    <div class="">
+                                        <h2 class="dashboard-card-header hms-dashboard-card-header">
+                                            <span>Today's</span>
+                                            <span>Booking</span>
+                                        </h2>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 divider btn_total_booking text-center card-sub-body" style="cursor: pointer;" role="button">
+                                    <div class="">
+                                        <h1 class="no-margin">
+                                            <t t-esc="widget.new_reservation_count_id"></t>
+                                        </h1>
+                                    </div>
+                                    <div class="">
+                                        <h2 class="dashboard-card-header hms-dashboard-card-header">
+                                            <span>Total</span>
+                                            <span>Booking</span>
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 mb-3 col-md-3" style="padding-top:2%;">
+                        <div class="card text-white dashboard-card gradient-ibiza-sunset o-hidden">
+                            <div class="card-body  hms-card-body">
+                                <div class="card-body-icon hms-card-icon">
+                                    <i class="fa fa-money"></i>
+                                </div>
+                                <div class="col-md-6 btn_today_revenue text-center card-sub-body" style="cursor: pointer;" role="button">
+                                    <h1 class="no-margin" style="display: inline-block; font-size: 16px;">
+                                        <span>
+                                            <t t-if="widget.position == 'before'">
+                                                <t t-esc="widget.symbol"/>
+                                                <t t-esc="widget.today_revenue"/>
+                                            </t>
+                                            <t t-else="">
+                                                <t t-esc="widget.today_revenue"/>
+                                                <t t-esc="widget.symbol"/>
+                                            </t>
+                                        </span>
+                                    </h1>
+                                    <div class="">
+                                        <h2 class="dashboard-card-header hms-dashboard-card-header">
+                                            <span>Today's</span>
+                                            <span>Revenue</span>
+                                        </h2>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 divider btn_total_revenue text-center card-sub-body" style="cursor: pointer;" role="button">
+                                    <h1 class="no-margin" style="display: inline-block; font-size: 16px;">
+                                        <span>
+                                            <t t-if="widget.position == 'before'">
+                                                <t t-esc="widget.symbol"/>
+                                                <t t-esc="widget.total_revenue"/>
+                                            </t>
+                                            <t t-else="">
+                                                <t t-esc="widget.total_revenue"/>
+                                                <t t-esc="widget.symbol"/>
+                                            </t>
+                                        </span>
+                                    </h1>
+                                    <div class="">
+                                        <h2 class="dashboard-card-header hms-dashboard-card-header">
+                                            <span>Total</span>
+                                            <span>Revenue</span>
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 mb-3 col-md-3" style="padding-top:2%;">
+                        <div class="card text-white dashboard-card gradient-green-tea o-hidden">
+                            <div class="card-body hms-card-body">
+                                <div class="card-body-icon hms-card-icon">
+                                    <i class="fa fa-sign-in fa-flip-horizontal"></i>
+                                </div>
+                                <div class="col-md-6 btn_today_arrival text-center card-sub-body" style="cursor: pointer;" role="button">
+                                    <div class="">
+                                        <h1 class="no-margin">
+                                            <t t-esc="widget.arrivals_count_id"></t>
+                                        </h1>
+                                    </div>
+                                    <div class="">
+                                        <h2 class="dashboard-card-header hms-dashboard-card-header">
+                                            <span>Today's</span>
+                                            <span>Arrivals</span>
+                                        </h2>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 divider btn_total_arrival text-center card-sub-body" style="cursor: pointer;" role="button">
+                                    <div class="">
+                                        <h1 class="no-margin">
+                                            <t t-esc="widget.total_reservation_count"></t>
+                                        </h1>
+                                    </div>
+                                    <div class="">
+                                        <h2 class="dashboard-card-header hms-dashboard-card-header">
+                                            <span>Total</span>
+                                            <span>Arrivals</span>
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 mb-3 col-md-3" style="padding-top:2%;">
+                        <div class="card text-white dashboard-card gradient-pomegranate o-hidden">
+                            <div class="card-body hms-card-body">
+                                <div class="card-body-icon hms-card-icon">
+                                    <i class="fa fa-sign-out"></i>
+                                </div>
+                                <div class="col-md-6 btn_today_departure text-center card-sub-body" style="cursor: pointer;" role="button">
+                                    <div class="">
+                                        <h1 class="no-margin">
+                                            <t t-esc="widget.departures_count_id"></t>
+                                        </h1>
+                                    </div>
+                                    <div class="">
+                                        <h2 class="dashboard-card-header hms-dashboard-card-header" style="font-size: 13px !important;">
+                                            <span>Today's</span>
+                                            <span>Departures</span>
+                                        </h2>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 divider btn_total_departure text-center card-sub-body" style="cursor: pointer;" role="button">
+                                    <div class="">
+                                        <h1 class="no-margin">
+                                            <t t-esc="widget.total_departure_count"></t>
+                                        </h1>
+                                    </div>
+                                    <div class="">
+                                        <h2 class="dashboard-card-header hms-dashboard-card-header" style="font-size: 13px !important;">
+                                            Total Departures
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Booking Details Part -->
+                <div class="row mt32">
+
+                    <div class="booking-detail-card hms-detail-card">
+                        <div class="booking-card-header">
+                            <header>Booking Details</header>
+                            <div class="tools">
+                                <a class="fa fa-repeat btn-color booking-refresh" href="javascript:;"></a>
+                                <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
+                                <!-- <a class="t-close btn-color fa fa-times" href="javascript:;"></a> -->
+                            </div>
+
+                        </div>
+
+                        <div class="booking-card-body" id="booking-detail-table">
+                            <div class="table-wrap">
+                                <div class="table-responsive">
+                                    <table class="table display mb-30" id="booking_detail">
+                                        <thead>
+                                            <tr>
+                                                <th>Reservation No</th>
+                                                <th>Name</th>
+                                                <th>Check In</th>
+                                                <th>Check Out</th>
+                                                <th>Status</th>
+                                                <th>Phone</th>
+                                                <!-- <th>Room Type</th> -->
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="booking_table_body">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="row mt32">
+
+                    <div class="col-md-8">
+                        <div class="room-detail-card hms-detail-card">
+                            <div class="booking-card-header">
+                                <header>Room Details</header>
+                                <div class="tools">
+                                    <a class="fa fa-repeat btn-color room-refresh" href="javascript:;"></a>
+                                    <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
+                                    <!-- <a class="t-close btn-color fa fa-times" href="javascript:;"></a> -->
+                                </div>
+
+                            </div>
+
+                            <div class="booking-card-body" id="room_detail_body">
+                                <div class="table-wrap">
+                                    <div class="table-responsive">
+                                        <table class="table display mb-30" id="room_detail">
+                                            <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Type</th>
+                                                    <th>Details</th>
+                                                    <th>Available</th>
+                                                    <th>Price</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="room_table_body">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="mb-3 sales-chart-area chart-card hms-detail-card">
+                            <div class="booking-card-header">
+                                <header>Sales Chart</header>
+                                <div class="tools">
+                                    <!-- <a class="fa fa-repeat btn-color sales-refresh" href="javascript:;"></a> -->
+                                    <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
+                                    <!-- <a class="t-close btn-color fa fa-times" href="javascript:;"></a> -->
+                                </div>
+
+                            </div>
+                            <div class="booking-card-body" id="sales_chart_body" style="padding-bottom: 15px;">
+                                <canvas id="sales_chart" class="sales-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row mt32 mb32">
+
+                    <div class="col-md-12">
+                        <div class="mb-3 room-chart-area chart-card hms-detail-card" id="occupancy_chart_body">
+                            <div class="booking-card-header">
+                                <header>Room Occupancy Chart</header>
+                                <div class="tools">
+                                    <!-- <a class="fa fa-repeat btn-color occupancy-refresh" href="javascript:;"></a> -->
+                                    <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
+                                    <!-- <a class="t-close btn-color fa fa-times" href="javascript:;"></a> -->
+                                </div>
+
+                            </div>
+                            <div class="booking-card-body">
+                                <canvas id="room_chart" class="room-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Chart Area Ends -->
+
+            </div>
+        </div>
+    </t>
+</templates>

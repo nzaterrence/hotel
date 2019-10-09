@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="hms_dashboard" model="ir.actions.client">
+        <field name="name">Dashboard</field>
+        <field name="tag">hms_dashboard</field>
+    </record>
+
+    <record id="ir_actions_server_hms_dashboard" model="ir.actions.server">
+        <field name="name">Hotel: Dashboard</field>
+        <field name="model_id" ref="hms_dashboard.model_hms_dashboard"/>
+        <field name="state">code</field>
+        <field name="code">action = model.env.ref('hms_dashboard.hms_dashboard').read()[0]</field>
+    </record>
+
+    <!-- Dashboard New Reservation Tree view -->
+    <record id="action_hotel_reservation_new_tree" model="ir.actions.act_window">
+        <field name="name">New Reservations</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hotel.reservation</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="hotel_reservation.view_hotel_reservation_tree"></field>
+        <field name="domain">[('state','=','draft')]</field>
+    </record>
+
+    <!-- Menu of DashBoard -->
+    <menuitem
+        id="menu_hms_dashboard"
+        name="Dashboard"
+        action="ir_actions_server_hms_dashboard"
+        sequence="0"
+        parent="hotel.hotel_management_menu"
+        icon="fa-dashboard"
+        web_icon="hms_dashboard,static/description/dashboard.png"
+        groups="hotel.group_hotel_manager"/>
+
+    <!-- Today's Invoice Filter in Account Invoice -->
+    <record id="view_account_invoice_search_inherited" model="ir.ui.view">
+        <field name="name">view.account.invoice.search.inherited</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <filter string="Today's Invoices" name="today_invoice" domain="[('date_invoice','=', context_today().strftime('%Y-%m-%d'))]"/>
+            </field>
+        </field>
+    </record>
+</odoo>

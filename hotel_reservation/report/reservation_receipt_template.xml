@@ -1,0 +1,260 @@
+
+<odoo>
+    <template id="reservation_receipt_report_template">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <t t-as="reserve" t-foreach="docs">
+                        <div class="page">
+                            <div class="col-12">
+                                  <div class="row" name="total">
+                                    <div class="col-8">
+                                        <img alt="image" style="max-height: 45px;" t-att-src="image_data_uri(reserve.company_id.logo)" t-if="reserve.company_id.logo"/>
+                                    </div>
+                                    
+                                        <div class="col-4 pull-right" style="font-size:16px">
+                                            <font color="#875A7"> <strong> <span t-field="reserve.company_id.name"/> </strong> </font>
+                                             <span t-field="reserve.company_id.partner_id" t-options='{"widget": "contact", "fields": ["address", "phone", "mobile", "fax", "email"],"no_marker": True, "phone_icons": True}'/>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="col-12">
+                                <center><h4><strong>Reservation Receipt</strong></h4></center>
+                                    <table class="table table-bordered table-sm" style="font-size:14px">
+                                        <tr style="text-align:center">
+                                            <td style="background-color:#4682B4">
+                                                <font color="ffffff"><strong> Guest Details </strong></font>
+                                            </td>
+                                            <td style="background-color:#4682B4"><font color="ffffff">
+                                                 <strong> Booking Details </strong> </font>
+                                            </td>
+                                        </tr>
+                                            
+                                        <tr>
+                                            <td>
+                                                <font color="#875A7"> <strong><span t-field="reserve.partner_id.name"/></strong> </font>
+                                                <span t-field="reserve.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;phone&quot;, &quot;mobile&quot; &quot;fax&quot;, &quot;email&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>
+                                            </td>
+                                            <td>
+                                                <table class="table table-borderless table-sm">
+                                                    <tr>
+                                                        <td width="45%"><font color="#875A7"><strong>Booking Date</strong></font></td>
+                                                        <td width="5%">
+                                                            <b>:</b>
+                                                        </td>
+                                                        <td width="50%">
+                                                            <span t-field="reserve.date_order" t-options="{&quot;format&quot;: &quot;dd MMM Y&quot;}"/>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td width="45%"><font color="#875A7"><strong>Reservation No</strong></font></td>
+                                                        <td width="5%">
+                                                            <b>:</b>
+                                                        </td>
+                                                        <td style="text-align:left">
+                                                            <span t-field="reserve.reservation_no"/>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td width="45%"><font color="#875A7"><strong> Arrival Date</strong></font></td>
+                                                        <td width="5%">
+                                                            <b>:</b>
+                                                        </td>
+                                                        <td width="50%">
+                                                            <span t-field="reserve.checkin" t-options="{&quot;format&quot;: &quot;dd MMM Y&quot;}"/>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td width="45%"><font color="#875A7"><strong> Departure Date</strong></font></td>
+                                                        <td width="5%">
+                                                            <b>:</b>
+                                                        </td>
+                                                        <td width="50%">
+                                                            <span t-field="reserve.checkout" t-options="{&quot;format&quot;: &quot;dd MMM Y&quot;}"/>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td width="45%"><font color="#875A7"><strong> Adults</strong></font></td>
+                                                        <td width="5%">
+                                                            <b>:</b>
+                                                        </td>
+                                                        <td width="50%">
+                                                            <span t-field="reserve.adults"/>
+                                                        </td>
+                                                            </tr>
+                                                    <tr>
+                                                        <td width="45%"><font color="#875A7"><strong> Children</strong></font></td>
+                                                        <td width="5%">
+                                                            <b>:</b>
+                                                        </td>
+                                                        <td width="50%">
+                                                            <span t-field="reserve.children"/>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="col-12">
+                                    <h4> <font color="#875A7"> <strong> Reservation Details </strong> </font> </h4>
+                                    <table class="table table-bordered table-sm" style="font-size:14px">
+                                        
+                                        <tr style="text-align:center">
+                                            <td style="background-color: #4682B4"><font color="ffffff">
+                                                <strong> No </strong></font>
+                                            </td>
+                                            <td style="background-color: #4682B4"><font color="ffffff">
+                                                <strong> Room Type </strong></font>
+                                            </td>
+                                            <td style="background-color: #4682B4"><font color="ffffff">
+                                                 <strong> Nights </strong></font>
+                                            </td>
+                                            <td style="background-color: #4682B4"><font color="ffffff">
+                                                <strong> Quantity </strong></font>
+                                            </td>
+                                            <td style="background-color: #4682B4"><font color="ffffff">
+                                                <strong> Unit Price </strong></font>
+                                            </td>
+                                            <td style="background-color: #4682B4"><font color="ffffff">
+                                                 <strong> Taxes </strong></font> 
+                                            </td>
+                                            <td style="background-color: #4682B4"><font color="ffffff">
+                                                 <strong> Total </strong></font> 
+                                            </td>
+                                        </tr>
+                                        <tr class="border-black" style="text-align:right" t-as="info" t-foreach="reserve.reservation_line">
+                                            <td style="text-align:center">
+                                                <span t-esc="info_index + 1"/>
+                                            </td>
+                                            <td style="text-align:center">
+                                                <span t-field="info.room_id"/>
+                                            </td>
+                                            <td style="text-align:center">
+                                                <span t-field="reserve.stay_days"/> 
+                                            </td>
+                                            <td style="text-align:center">
+                                                <span t-esc="'%.2f'% info.qty"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="info.price_unit"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="', '.join(map(lambda x: (x.name), info.tax_id))"/> 
+                                            </td>
+                                            <td>
+                                                <span t-field="info.price_subtotal"/> 
+                                            </td>
+                                        </tr>
+                                        
+                                    </table>
+                                </div>
+
+                                <div class="col-12">
+                                    <h4> <font color="#875A7"> <strong> Services Details </strong> </font> </h4>
+                                    <table class="table table-bordered table-sm" style="font-size:14px">
+                                        <tr style="text-align:center">
+                                            <td style="background-color: #4682B4"><font color="ffffff">
+                                                <strong> No </strong></font>
+                                            </td>
+                                            <td style="background-color: #4682B4"><font color="ffffff">
+                                                <strong> Service Name </strong></font>
+                                            </td>
+                                            <td style="background-color: #4682B4"><font color="ffffff">
+                                                <strong> Quantity </strong></font>
+                                            </td>
+                                            <td style="background-color: #4682B4"><font color="ffffff">
+                                                <strong> Unit Price </strong></font>
+                                            </td>
+                                            <td style="background-color: #4682B4"><font color="ffffff">
+                                                 <strong> Taxes </strong></font> 
+                                            </td>
+                                            <td style="background-color: #4682B4"><font color="ffffff">
+                                                 <strong> Total </strong></font> 
+                                            </td>
+                                        </tr>
+                                        <tr class="border-black" style="text-align:right" t-as="service_line" t-foreach="reserve.service_lines">
+                                            <td style="text-align:center">
+                                                <span t-esc="service_line_index + 1"/>
+                                            </td>
+                                            <td style="text-align:center">
+                                                <span t-field="service_line.product_id"/>
+                                            </td>
+                                            <td style="text-align:center">
+                                                <span t-esc="'%.2f'% service_line.qty"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="service_line.price_unit"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="', '.join(map(lambda x: (x.name), service_line.tax_id))"/> 
+                                            </td>
+                                            <td>
+                                                <span t-field="service_line.price_subtotal"/> 
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <table class="table table-condensed table-sm pull-right" style="width: 30%;font-size:14px;">
+                                        <tr>
+                                            <td class="text-left" colspan="5"><strong>Excluding Taxes</strong></td>
+                                                <td class="text-left">
+                                                    <span t-field="reserve.amount_untaxed" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: reserve.pricelist_id.currency_id}"/>
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left" colspan="5"><strong>Taxes</strong></td>
+                                            <td class="border-black" style="text-align:left">
+                                                <span t-field="reserve.amount_tax" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: reserve.pricelist_id.currency_id}"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left" colspan="5"><strong> Grand Total</strong></td>
+                                            <td class="text-left">
+                                                <span t-field="reserve.amount_total" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: reserve.pricelist_id.currency_id}"/>
+                                            </td>
+                                            </tr>
+                                    </table>
+                                </div>
+                                <div class="col-12">
+                                    <table class="table table-bordered table-sm" style="font-size:14px">
+                                        <tr>
+                                            <td style="background-color: #4682B4"><font color="ffffff">
+                                                <strong>Hotel Policy</strong></font>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <t t-raw="reserve.company_id.hotel_policy"/>
+                                            </td>
+                                        </tr>
+                                            
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="footer">
+                                 <div class="col-12">
+                                    <table class="table table-borderless table-sm" style="font-size:14px">
+                                        <tr>
+                                            <td style="width: 30%;"></td>
+                                            <td class="text-right" style="width: 30%;"> 
+                                                Page
+                                                <span class="page"/>
+                                                /
+                                               <span class="topage"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-field="reserve.reservation_no"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            </t> 
+                        </t>
+                    </t>            
+                </template>
+            </odoo>

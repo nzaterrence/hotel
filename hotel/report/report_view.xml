@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='us-ascii'?>
+<odoo>
+
+    <report file="hotel.report_hotel_folio"
+            id="report_hotel_management"
+            menu="False"
+            model="hotel.folio"
+            name="hotel.report_hotel_folio"
+            report_type="qweb-pdf"
+            string="Hotel Folio" />
+
+    <report id="report_hotel_currency"
+            file="hotel.report_currency_exchange" 
+            menu="False"
+            model="currency.exchange"
+            name="hotel.report_currency_exchange"
+            report_type="qweb-pdf"
+            string="Encashment Certificate" />
+
+</odoo>

@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+<!--Navigation Bar-->
+<template id="layout_navigation" inherit_id="website.layout">
+    <xpath expr="//header" position="replace">
+           <!-- Header Area Start -->
+    <header class="header-area">
+        <!-- Search Form -->
+        <div class="search-form d-flex align-items-center">
+            <div class="container">
+                <form action="index.html" method="get">
+                    <input type="search" name="search-form-input" id="searchFormInput" placeholder="Type your keyword ..."/>
+                    <button type="submit"><i class="icon_search"></i></button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Top Header Area Start -->
+        <div class="top-header-area">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-6">
+                        <div class="top-header-content">
+                            <a href="#"><i class="fa fa-phone"></i> <span>+91 9033472982</span></a>
+                            <a href="#"><i class="fa fa-envelope"></i> <span>contact@serpentcs.com</span></a>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="top-header-content">
+                            <!-- Top Social Area -->
+                            <div class="top-social-area ml-auto">
+                                <a href="#"><i class="fa fa-facebook-official" ></i></a>
+                                <a href="#"><i class="fa fa-twitter-square" ></i></a>
+                                <a href="#"><i class="fa fa-tripadvisor" ></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Top Header Area End -->
+
+        <!-- Main Header Start -->
+        <div class="main-header-area">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Classy Menu -->
+                    <nav class=" navbar navbar-expand-sm main_box classy-navbar justify-content-between" id="hotelNav">
+
+                        <!-- Logo -->
+                        <a class="nav-brand" href="index.html"><img src="hotel_website/static/src/image/serpent_logo.png" alt="" /></a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+                            <!-- Menu Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul id="nav" class="navbar-nav">
+                                    <li class="active nav-item"><a href="./index.html">Home</a></li>
+                                    <li class="nav-item"><a href="./room.html">About Us</a></li>
+                                    <li class="nav-item"><a href="./about.html">Book</a></li>
+                                    <li class="nav-item"><a href="#">Gallary</a>
+                                    </li>
+                                    <li class="nav-item"><a href="./contact.html">Contact</a></li>
+                                </ul>
+
+                             <!-- Search -->
+                                <div class="search-btn ml-4">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </div>
+
+                                <!-- Book Now -->
+                                <div class="book-now-btn ml-3 ml-lg-5">
+                                    <a href="#">Book Now <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
+                            <!-- Nav End -->
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header Area End -->
+    </xpath>
+</template>
+
+
+<template id="hotel_website_homepage1" name="Home page" inherit_id="website.homepage">
+    <t t-call="website.layout">
+        <xpath expr="//div[@id='wrap']" position="replace">
+        <title>Hotel Management</title>
+        <!-- Top Header Area End -->
+
+            <!-- Welcome Area Start -->
+    <section class="welcome-area">
+        <div class="welcome-slides owl-carousel">
+            <!-- Single Welcome Slide -->
+            <div class="single-welcome-slide bg-img bg-overlay" style="background-image: url(hotel_website/static/src/image/16.jpg);" data-img-url="hotel_website/static/src/image/16.jpg">
+                <!-- Welcome Content -->
+                <div class="welcome-content h-100">
+                    <div class="container h-100">
+                        <div class="row h-100 align-items-center">
+                            <!-- Welcome Text -->
+                            <div class="col-12">
+                                <div class="welcome-text text-center">
+                                    <h6 data-animation="fadeInLeft" data-delay="200ms">Hotel Website</h6>
+                                    <h2 data-animation="fadeInLeft" data-delay="500ms">Welcome To Hotel</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- Welcome Area End -->
+        <!-- About Us Area Start -->
+ <section class="hotel-about-area section-padding-100-0">
+        <!-- Hotel Search Form Area -->
+        <div class="hotel-search-form-area">
+            <div class="container-fluid">
+                <div class="hotel-search-form">
+                    <form action="#" method="post">
+                        <div class="row justify-content-between align-items-end">
+                            <div class="col-6 col-md-2 col-lg-3">
+                                <label for="checkIn">Check In</label>
+                                <input type="date" class="form-control" id="checkIn" name="checkin-date"/>
+                            </div>
+                            <div class="col-6 col-md-2 col-lg-3">
+                                <label for="checkOut">Check Out</label>
+                                <input type="date" class="form-control" id="checkOut" name="checkout-date" />
+                            </div>
+                            <div include="form-input-select()" class="col-4 col-md-1">
+                                <label for="room">Room</label>
+                                <select name="room" id="room" class="form-control">
+                                    <!-- <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option> -->
+                                    <t t-foreach="room_type" t-as="room">
+                                        <option t-att-value="room.id">
+                                            <t t-esc="room.name"/>
+                                        </option>
+                                    </t>
+                                </select>
+                            </div>
+                            <div class="col-4 col-md-1">
+                                <label for="adults">Adult</label>
+                                <select name="adults" id="adults" class="form-control">
+                                    <option value="01">1</option>
+                                    <option value="02">2</option>
+                                    <option value="03">3</option>
+                                    <option value="04">4</option>
+                                    <option value="05">5</option>
+                                    <option value="06">6</option>
+                                </select>
+                            </div>
+                            <div class="col-4 col-md-1">
+                                <label for="children">Children</label>
+                                <select name="children" id="children" class="form-control">
+                                    <option value="01">1</option>
+                                    <option value="02">2</option>
+                                    <option value="03">3</option>
+                                    <option value="04">4</option>
+                                    <option value="05">5</option>
+                                    <option value="06">6</option>
+                                </select>
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <button type="submit" class="form-control btn hotel-btn w-100">Check Availability</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-100">
+            <div class="room">
+                <div class="room-detail">
+                    <div class="text-center">
+                        <h6>Single Dulex Room</h6>
+                    </div>
+                    <div class="room-detail-img">
+                        <img src="hotel_website/static/src/image/16.jpg" alt=""/>
+                    </div>
+                    <div>
+                        <div class="room-detail-icon">
+                            <a href="#"><i class="fa fa-phone"></i> <span>WIFI</span></a>
+                        </div>
+                        <div class="room-detail-icon">
+                            <a href="#"><i class="fa fa-envelope"></i> <span>Laundry</span></a>
+                        </div>
+                        <div class="room-detail-icon">
+                            <a href="#"><i class="fa fa-phone"></i> <span>WIFI</span></a>
+                        </div>
+                        <div class="room-detail-icon">
+                            <a href="#"><i class="fa fa-envelope"></i> <span>Laundry</span></a>
+                        </div>
+                    </div>
+                    <div class="room-detail-btn">
+                        <button type="submit" class="form-control btn hotel-btn w-100">Book Now</button>
+                    </div>
+                </div>
+                <div class="room-detail">
+                    <div class="text-center">
+                        <h6>Single Dulex Room</h6>
+                    </div>
+                    <div class="room-detail-img">
+                        <img src="hotel_website/static/src/image/16.jpg" alt=""/>
+                    </div>
+                    <div>
+                        <div class="room-detail-icon">
+                            <a href="#"><i class="fa fa-phone"></i> <span>WIFI</span></a>
+                        </div>
+                        <div class="room-detail-icon">
+                            <a href="#"><i class="fa fa-envelope"></i> <span>Laundry</span></a>
+                        </div>
+                        <div class="room-detail-icon">
+                            <a href="#"><i class="fa fa-phone"></i> <span>WIFI</span></a>
+                        </div>
+                        <div class="room-detail-icon">
+                            <a href="#"><i class="fa fa-envelope"></i> <span>Laundry</span></a>
+                        </div>
+                    </div>
+                    <div class="room-detail-btn">
+                        <button type="submit" class="form-control btn hotel-btn w-100">Book Now</button>
+                    </div>
+                </div>
+                <div class="room-detail">
+                    <div class="text-center">
+                        <h6>Single Dulex Room</h6>
+                    </div>
+                    <div class="room-detail-img">
+                        <img src="hotel_website/static/src/image/16.jpg" alt=""/>
+                    </div>
+                    <div>
+                        <div class="room-detail-icon">
+                            <a href="#"><i class="fa fa-phone"></i> <span>WIFI</span></a>
+                        </div>
+                        <div class="room-detail-icon">
+                            <a href="#"><i class="fa fa-envelope"></i> <span>Laundry</span></a>
+                        </div>
+                        <div class="room-detail-icon">
+                            <a href="#"><i class="fa fa-phone"></i> <span>WIFI</span></a>
+                        </div>
+                        <div class="room-detail-icon">
+                            <a href="#"><i class="fa fa-envelope"></i> <span>Laundry</span></a>
+                        </div>
+                    </div>
+                    <div class="room-detail-btn">
+                        <button type="submit" class="form-control btn hotel-btn w-100">Book Now</button>
+                    </div>
+                </div>
+                <div class="room-detail">
+                    <div class="text-center">
+                        <h6>Single Dulex Room</h6>
+                    </div>
+                    <div class="room-detail-img">
+                        <img src="hotel_website/static/src/image/16.jpg" alt=""/>
+                    </div>
+                    <div>
+                        <div class="room-detail-icon">
+                            <a href="#"><i class="fa fa-phone"></i> <span>WIFI</span></a>
+                        </div>
+                        <div class="room-detail-icon">
+                            <a href="#"><i class="fa fa-envelope"></i> <span>Laundry</span></a>
+                        </div>
+                        <div class="room-detail-icon">
+                            <a href="#"><i class="fa fa-phone"></i> <span>WIFI</span></a>
+                        </div>
+                        <div class="room-detail-icon">
+                            <a href="#"><i class="fa fa-envelope"></i> <span>Laundry</span></a>
+                        </div>
+                    </div>
+                    <div class="room-detail-btn">
+                        <button type="submit" class="form-control btn hotel-btn w-100">Book Now</button>
+                    </div>
+                </div>
+                <!-- <div>
+                    <label for="adults">Adult</label>
+                    <img src="hotel_website/static/src/image/16.jpg" alt=""/>
+                </div>
+                <div>
+                    <label for="adults">Adult</label>
+                    <img src="hotel_website/static/src/image/16.jpg" alt=""/>
+                </div>
+                <div>
+                    <label for="adults">Adult</label>
+                    <img src="hotel_website/static/src/image/16.jpg" alt=""/>
+                </div> -->
+            </div>
+            <div class="calander-booking">
+                <div class="calander-booking-detail">
+              
+                    <div class="text-center">
+                        <h6>Single Dulex Room</h6>
+                    </div>
+                    <div>
+                        <img src="hotel_website/static/src/image/16.jpg" alt=""/>
+                    </div>
+                    <div>
+                        <a href="#"><i class="fa fa-phone"></i> <span>WIFI</span></a>
+                        <a href="#"><i class="fa fa-envelope"></i> <span>Laundry</span></a>
+                        <a href="#"><i class="fa fa-phone"></i> <span>WIFI</span></a>
+                        <a href="#"><i class="fa fa-envelope"></i> <span>Laundry</span></a>
+                    </div>
+                    <div>
+                        <button type="submit" class="form-control btn hotel-btn w-100">Book Now</button>
+                    </div>
+                </div>
+                 <div class="calander-booking-detail">
+              
+                    <div class="text-center">
+                        <h6>Single Dulex Room</h6>
+                    </div>
+                    <div>
+                        <img src="hotel_website/static/src/image/16.jpg" alt=""/>
+                    </div>
+                    <div>
+                        <a href="#"><i class="fa fa-phone"></i> <span>WIFI</span></a>
+                        <a href="#"><i class="fa fa-envelope"></i> <span>Laundry</span></a>
+                        <a href="#"><i class="fa fa-phone"></i> <span>WIFI</span></a>
+                        <a href="#"><i class="fa fa-envelope"></i> <span>Laundry</span></a>
+                    </div>
+                    <div>
+                        <button type="submit" class="form-control btn hotel-btn w-100">Book Now</button>
+                    </div>
+                </div>
+                 <div class="calander-booking-detail">
+              
+                    <div class="text-center">
+                        <h6>Single Dulex Room</h6>
+                    </div>
+                    <div>
+                        <img src="hotel_website/static/src/image/16.jpg" alt=""/>
+                    </div>
+                    <div>
+                        <a href="#"><i class="fa fa-phone"></i> <span>WIFI</span></a>
+                        <a href="#"><i class="fa fa-envelope"></i> <span>Laundry</span></a>
+                        <a href="#"><i class="fa fa-phone"></i> <span>WIFI</span></a>
+                        <a href="#"><i class="fa fa-envelope"></i> <span>Laundry</span></a>
+                    </div>
+                    <div>
+                        <button type="submit" class="form-control btn hotel-btn w-100">Book Now</button>
+                    </div>
+                </div>
+            </div>
+            <!-- <div>
+                <div>
+                    <label for="adults">Adult</label>
+                    <img src="hotel_website/static/src/image/16.jpg" alt=""/>
+                </div>
+                <div>
+                    <label for="adults">Adult</label>
+                    <img src="hotel_website/static/src/image/16.jpg" alt=""/>
+                </div>
+                <div>
+                    <label for="adults">Adult</label>
+                    <img src="hotel_website/static/src/image/16.jpg" alt=""/>
+                </div>
+            </div> -->
+        </div>
+    </section>
+    <!-- About Us Area End -->
+
+
+
+            <!-- <div class="col-md-6 slider-image">
+                <img src="/hotel_website/static/src/image/hotel.jpeg" class="img img-responsive s-image"/>
+            </div> -->
+        </xpath>
+    </t>
+    </template>
+
+</odoo>

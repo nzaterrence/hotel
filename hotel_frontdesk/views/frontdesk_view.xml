@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="hotel_frontdesk" model="ir.actions.client">
+        <field name="name">Hotel Frontdesk</field>
+        <field name="tag">hotel_frontdesk</field>
+    </record>
+
+    <record id="ir_actions_server_hotel_frontdesk" model="ir.actions.server">
+        <field name="name">Hotel: Frontdesk</field>
+        <field name="model_id" ref="hotel_frontdesk.model_hotel_frontdesk"/>
+        <field name="state">code</field>
+        <field name="code">action = model.env.ref('hotel_frontdesk.hotel_frontdesk').read()[0]</field>
+    </record>
+
+    <!-- Menu of Front Desk -->
+    <menuitem id="menu_hotel_frontdesk" name="Frontdesk" action="ir_actions_server_hotel_frontdesk" sequence="0" parent="hotel.hotel_management_menu" icon="fa-user-tie" web_icon="hotel_frontdesk,static/description/dashboard.png" groups="hotel.group_hotel_manager"/>
+
+</odoo>

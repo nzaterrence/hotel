@@ -1,0 +1,165 @@
+<!DOCTYPE xml>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Floor -->
+        <record id="hotel_floor_ground0" model="hotel.floor">
+            <field eval="&quot;Ground&quot;" name="name"/>
+        </record>
+        <record id="hotel_floor_first0" model="hotel.floor">
+            <field eval="&quot;First&quot;" name="name"/>
+            <field eval="1" name="sequence"/>
+        </record>
+        <record id="hotel_floor_second0" model="hotel.floor">
+            <field eval="&quot;Second&quot;" name="name"/>
+            <field eval="2" name="sequence"/>
+        </record>
+        <record id="hotel_floor_third0" model="hotel.floor">
+            <field eval="&quot;Third&quot;" name="name"/>
+            <field eval="3" name="sequence"/>
+        </record>
+
+        <!-- Hotel Room Amenities Type -->
+        <record id="hotel_room_amenities_type_0"
+                model="hotel.room.amenities.type">
+            <field name="name">All Amenities</field>
+        </record>
+        <record id="hotel_room_amenities_type_1" model="hotel.room.amenities.type">
+            <field name="name">Beds</field>
+            <field name="categ_id" ref="hotel.hotel_room_amenities_type_0"/>
+        </record>
+        <record id="hotel_room_amenities_type_2" model="hotel.room.amenities.type">
+            <field name="name">Tables</field>
+            <field name="categ_id" ref="hotel.hotel_room_amenities_type_0"/>
+        </record>
+        <record id="hotel_room_amenities_type_3" model="hotel.room.amenities.type">
+            <field name="name">Single Bed</field>
+            <field name="categ_id" ref="hotel.hotel_room_amenities_type_1"/>
+        </record>
+        <record id="hotel_room_amenities_type_4" model="hotel.room.amenities.type">
+            <field name="name">Double Bed</field>
+            <field name="categ_id" ref="hotel.hotel_room_amenities_type_1"/>
+        </record>
+
+
+        <!--Hotel Room Type -->
+        <record id="rooms_type" model="product.category">
+            <field name="name">All Rooms</field>
+        </record>
+        <record id="rooms_type_single" model="product.category">
+            <field name="name">Single</field>
+        </record>
+        <record id="rooms_type_double" model="product.category">
+            <field name="name">Double</field>
+        </record>
+        <record id="rooms_type_villa" model="product.category">
+            <field name="name">Villa</field>
+        </record>
+
+        <!-- Hotel Room -->
+        <record id="hotel_room_single" model="hotel.room">
+            <field name="name">Single Room</field>
+            <field name="categ_id" search="[('name', '=', 'Single')]"/>
+            <field name="capacity">4</field>
+        </record>
+        <record id="hotel_room_double" model="hotel.room">
+            <field name="name">Deluxe Room</field>
+            <field name="categ_id" search="[('name', '=', 'Double')]"/>
+            <field name="capacity">4</field>
+        </record>
+        <record id="hotel_room_villa" model="hotel.room">
+            <field name="name">Villa</field>
+            <field name="categ_id" search="[('name', '=', 'Villa')]"/>
+            <field name="capacity">4</field>
+        </record>
+
+        <!-- hotel_service_type -->
+        <record id="hotel_service_type_0" model="hotel.service.type">
+            <field name="name">All Services</field>
+        </record>
+        <record id="hotel_service_type_1" model="hotel.service.type">
+            <field name="parent_id" search="[('name', '=', 'All Services')]"/>
+            <field name="name">Fixed</field>
+        </record>
+        <record id="hotel_service_type_2" model="hotel.service.type">
+            <field name="parent_id" search="[('name', '=', 'All Services')]"/>
+            <field name="name">Variable</field>
+        </record>
+
+        <!--Hotel Room Number-->
+        <record id="single_room_101" model="hotel.room.number">
+            <field name="name">Single Room-101</field>
+            <field name="room_id" ref="hotel_room_single"/>
+        </record>
+        <record id="single_room_102" model="hotel.room.number">
+            <field name="name">Single Room-102</field>
+            <field name="room_id" ref="hotel_room_single"/>
+        </record>
+        <record id="double_room_101" model="hotel.room.number">
+            <field name="name">Double Room-101</field>
+            <field name="room_id" ref="hotel_room_double"/>
+        </record>
+        <record id="double_room_102" model="hotel.room.number">
+            <field name="name">Double Room-102</field>
+            <field name="room_id" ref="hotel_room_double"/>
+        </record>
+        <record id="villa_room_101" model="hotel.room.number">
+            <field name="name">Villa-101</field>
+            <field name="room_id" ref="hotel_room_villa"/>
+        </record>
+        <record id="villa_room_102" model="hotel.room.number">
+            <field name="name">Villa-102</field>
+            <field name="room_id" ref="hotel_room_villa"/>
+        </record>
+    
+      
+        <!-- Hotel Services -->
+        <record id="hotel_service_6" model="hotel.services">
+            <field name="name">Internet</field>
+            <field name="type">service</field>
+            <field name="categ_id" search="[('name', '=', 'Fixed')]"/>
+            <field name="list_price">200.00</field>
+            <field name="service_ok">True</field>
+        </record>
+        <record id="hotel_service_0" model="hotel.services">
+            <field name="name">Taxi</field>
+            <field name="type">service</field>
+            <field name="categ_id" search="[('name', '=', 'Variable')]"/>
+            <field name="list_price">500.00</field>
+            <field name="service_ok">True</field>
+        </record>
+        <record id="hotel_service_1" model="hotel.services">
+            <field name="name">Laundry</field>
+            <field name="type">service</field>
+            <field name="categ_id" search="[('name', '=', 'Fixed')]"/>
+            <field name="list_price">150.00</field>
+            <field name="service_ok">True</field>
+        </record>
+
+        <!-- Amenities -->
+        <record id="hotel_room_amenities_1" model="hotel.room.amenities">
+            <field name="name">Toiletries</field>
+            <field name="type">service</field>
+            <field name="categ_id" ref="hotel.hotel_room_amenities_type_0"/>
+            <field name="service_ok">True</field>
+        </record>
+        <record id="hotel_room_amenities_2" model="hotel.room.amenities">
+            <field name="name">Iron</field>
+            <field name="type">service</field>
+            <field name="categ_id" ref="hotel.hotel_room_amenities_type_0"/>
+            <field name="service_ok">True</field>
+        </record>
+        <record id="hotel_room_amenities_3" model="hotel.room.amenities">
+            <field name="name">Irons Boards</field>
+            <field name="type">service</field>
+            <field name="categ_id" ref="hotel.hotel_room_amenities_type_0"/>
+            <field name="service_ok">True</field>
+        </record>
+        <record id="hotel_room_amenities_4" model="hotel.room.amenities">
+            <field name="name">Valet Parking</field>
+            <field name="type">service</field>
+            <field name="categ_id" ref="hotel.hotel_room_amenities_type_0"  />
+            <field name="service_ok">True</field>
+        </record>
+    </data>
+</odoo>

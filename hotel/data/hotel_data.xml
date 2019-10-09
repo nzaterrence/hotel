@@ -1,0 +1,10 @@
+<odoo>
+    <data noupdate="1">
+
+        <record id="hotel_extra_room_charge_site_seen" model="product.product">
+            <field name="name">Extra Room Site Seen Charge</field>
+            <field name="service_ok">True</field>
+        </record>
+
+    </data>
+</odoo>

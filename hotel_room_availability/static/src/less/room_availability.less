@@ -1,0 +1,310 @@
+.o_web_client .oe_room_availability_weekly {
+    overflow-x: auto;
+    padding-left: 1em;
+
+    > table {
+        width: 100%;
+
+        > tbody {
+            transition: 0.4s linear;
+
+            &.div_panel {
+                box-shadow: 0 5px 10px #999;
+
+                &:before {
+                    content: "-";
+                    display: block;
+                    line-height: 10px;
+                    color: transparent;
+                }
+            }
+
+            &.tbody_group {
+                box-shadow: 0 5px 10px #999;
+                transition: 0.5s linear;
+
+                &:before {
+                    content: "-";
+                    display: block;
+                    line-height: 6px;
+                    color: transparent;
+                }
+            }
+
+            &.pricelist_tbody {
+                &:before {
+                    content: "-";
+                    display: block;
+                    line-height: 10px !important;
+                    color: transparent;
+                }
+            }
+        }
+
+        > tbody > tr {
+            transition: 0.5s linear;
+
+            &.value-tr {
+                &:before {
+                    content: attr(caption) !important;
+                    position: absolute;
+                    width: 70px;
+                    // white-space: nowrap;
+                    text-align: center;
+                    font-size: 0.9em;
+                    background-color: #e2e2e0 !important;
+                    // padding: 6px 5px;
+                    line-height: 1.42857143;
+                    vertical-align: top;
+                    border: 1px solid #b7b7b7;
+                    box-sizing: border-box;
+                    font-weight: bold;
+                    display: table-cell;
+                    border-collapse: collapse;
+                    border-spacing: 0;
+                    height: 30px;
+                    // overflow: hidden;
+                    box-shadow: 3px 0 2px #ddd;
+                }
+
+                &.room_name {
+                    &:before {
+                        color: #146594 !important;
+                        font-size: 1em;
+                    }
+                }
+
+                &:nth-of-type(odd) {
+                    &:before {
+                        background-color: #efeff8 !important;
+                    }
+                }
+
+                &:nth-of-type(even) {
+                    &:before {
+                        background-color: #fff !important;
+                    }
+                }
+            }
+
+            &.input-tr {
+                &.room_name {
+                    &:before {
+                        color: #146594 !important;
+                        font-size: 1em;
+                    }
+                }
+
+                &:before {
+                    content: attr(caption) !important;
+                    width: 70px;
+                    position: absolute;
+                    // white-space: nowrap;
+                    text-align: center;
+                    font-size: 0.9em;
+                    background-color: #e2e2e0 !important;
+                    // padding: 7.5px 5px;
+                    line-height: 1.42857143;
+                    vertical-align: top;
+                    border: 1px solid #b7b7b7;
+                    box-sizing: border-box;
+                    font-weight: bold;
+                    display: table-cell;
+                    border-collapse: collapse;
+                    border-spacing: 0;
+                    height: 36px;
+                    // overflow: hidden;
+                    box-shadow: 3px 0 2px #ddd;
+                }
+
+                &:nth-of-type(odd) {
+                    &:before {
+                        background-color: #efeff8 !important;
+                    }
+                }
+
+                &:nth-of-type(even) {
+                    &:before {
+                        background-color: #fff !important;
+                    }
+                }
+            }
+            // &.default-tr {
+            //     &:before {
+            //         content: attr(caption);
+            //         position: absolute;
+            //         white-space: nowrap;
+            //         text-align: left;
+            //         font-size: 10px;
+            //         padding: 5px;
+            //         line-height: 1.42857143;
+            //         vertical-align: top;
+            //         border: none;
+            //         box-sizing: border-box;
+            //         font-weight: bold;
+            //         display: table-cell;
+            //         border-collapse: collapse;
+            //         border-spacing: 0;
+            //         height: 36px;
+            //         width: 54px;
+            //         overflow: hidden;
+            //     }
+            // }
+            // &.gap_tr {
+            //     &.before {
+            //         background-color: #fff;
+            //         border: none;
+            //     }
+            // }
+            > th {
+                &.oe_timesheet_weekly_account {
+                    // white-space: nowrap;
+                    text-align: left;
+                    min-width: 70px;
+                    width: 70px;
+                    background-color: transparent !important;
+                    color: transparent !important;
+                    display: block;
+                }
+                width: 70px;
+                text-align: center;
+                font-size: 10px;
+                background-color: #efeeee !important;
+            }
+
+            > td {
+                text-align: center;
+                width: 70px;
+                max-width: 70px;
+
+                &.accordian_td {
+                    background-color: #7790a9 !important;
+
+                    button.accordian_btn {
+                        background-color: #7790a9 !important;
+                        text-align: center;
+                        color: #fff !important;
+                        font-size: 1em;
+                        cursor: pointer;
+                        width: 100%;
+                        text-align: left;
+                        border: none;
+                        outline: none;
+                        transition: 0.4s linear;
+                        font-weight: bold;
+                    }
+
+                    button.expanded_row {
+                        &:after {
+                            content: '\f078';
+                            font-family: FontAwesome;
+                            font-style: normal;
+                            font-weight: normal;
+                            text-decoration: inherit;
+                        }
+                    }
+
+                    button.closed_row {
+                        &:after {
+                            content: '\f077';
+                            font-family: FontAwesome;
+                            font-style: normal;
+                            font-weight: normal;
+                            text-decoration: inherit;
+                        }
+                    }
+                }
+
+                &.input_td {
+                    background-color: #d9edf7 !important;
+                }
+
+                &.oe_timesheet_weekly_account {
+                    // white-space: nowrap;
+                    text-align: left;
+                }
+
+                input.oe_timesheet_weekly_input {
+                    display: inline-block;
+                    width: 40px;
+                    text-align: center;
+                    border: none;
+                    border-bottom: 1px solid #cacaca;
+                    border-radius: 0;
+                    transition: 0.3s linear;
+                    color: #000 !important;
+
+                    &:focus {
+                        box-shadow: 0 0 10px #999;
+                        border-bottom: 2px solid #a7a7c7 !important;
+                        transition: 0.3s linear;
+                        padding-bottom: 0;
+                    }
+                }
+
+                input.full-width {
+                    width: 100%;
+                    width: -moz-available;
+                    width: -webkit-fill-available;
+                    width: fill-available;
+                }
+
+                .oe_timesheet_button_add {
+                    margin-left: 8px;
+                }
+
+                .o_with_button + .oe_timesheet_button_add {
+                    margin-left: 45px;
+                }
+            }
+
+            .oe_timesheet_weekly_today {
+                background-color: lighten(#9E588B, 40%) !important;
+            }
+
+            .oe_timesheet_total {
+                font-weight: bold;
+                background-color: #9E588B !important;
+            }
+
+            .o_add_timesheet_line {
+                width: 1%;
+                background-color: #9E588B !important;
+
+                > div {
+
+                    .o_form_field_many2one {
+                        min-width: 200px;
+                        margin: 0;
+                    }
+
+                    .o_external_button {
+                        background-color: #9E588B !important;
+                        padding-top: 0;
+                        padding-bottom: 0;
+                    }
+
+                    .oe_timesheet_button_add {
+                        margin-left: 8px;
+                    }
+
+                    .o_with_button + .oe_timesheet_button_add {
+                        margin-left: 45px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.openerp .oe_room_availability_weekly {
+    > table > tbody > tr {
+        > th {
+            color: #069 !important;
+        }
+
+        .o_add_timesheet_line {
+            width: auto;
+        }
+    }
+}

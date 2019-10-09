@@ -1,0 +1,29 @@
+<odoo>
+    <data>
+        <!-- Calendar view of hotel reservation -->
+        <record id="hotel_quick_reservation_calendar_view" model="ir.ui.view">
+            <field name="name">Room Reservation</field>
+            <field name="model">hotel.quick.reservation</field>
+            <field name="priority" eval="2"/>
+            <field name="arch" type="xml">
+                <calendar string="Quick Reservation" date_start="room_date" quick_add="True" color="room_id" event_open_popup="true" mode="month">
+                    <field name="room_id"/>
+                    <field name="room_qty"/>
+                    <field name="price"/>
+                </calendar>
+            </field>
+        </record>
+
+        <!-- Action of hotel reservation -->
+        <record id="action_hotel_quick_reservation" model="ir.actions.act_window">
+            <field name="name">Quick Reservations</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hotel.quick.reservation</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">calendar</field>
+        </record>
+
+        <menuitem name="Quick Reservation" id="menu_hotel_quick_reservation" action="action_hotel_quick_reservation" parent="hotel.menu_hotel_reservation" sequence="1"/>
+
+    </data>
+</odoo>

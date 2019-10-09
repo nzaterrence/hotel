@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE xml>
+<odoo>
+    <data noupdate="1">
+	<!-- Hotel Extra Bed charges -->
+        <record id="hotel_extra_bed_charge" model="product.product">
+            <field name="name">Extra Bed Charge</field>
+            <field name="standard_price">1</field>
+            <field name="service_ok">True</field>
+        </record>
+	</data>
+</odoo>

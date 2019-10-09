@@ -1,0 +1,7 @@
+<odoo>
+	<template id="hotel_about_layout" name="HotelAboutUs Layout" >
+		<t t-call="website.layout">
+        	
+    	</t>
+    </template>      
+</odoo>

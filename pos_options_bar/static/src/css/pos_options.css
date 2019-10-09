@@ -1,0 +1,14 @@
+/*.......optionbar conatiner style .......*/
+
+.option_list_box_container{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    padding: 8px 16px 0px 11px;
+    margin-bottom: -6px;
+}
+.content_row_custom{
+	width: 100%;
+	height: 100%;
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <template id="assets_backend" name="HMS assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <!-- stylesheet -->
+                <link rel="stylesheet" href="/hotel_frontdesk/static/src/css/frappe-gantt.css" />
+                <link rel="stylesheet" href="/hotel_frontdesk/static/src/css/hotel_frontdesk.css"/>
+
+                <!-- Scripts -->
+                <script type="text/javascript" src="/hotel_frontdesk/static/src/js/hotel_frontdesk.js"></script>
+                <script type="text/javascript" src="/hotel_frontdesk/static/src/js/frappe-gantt.js"></script>
+            </xpath>
+        </template>
+    </data>
+</odoo>

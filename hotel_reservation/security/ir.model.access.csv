@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hotel_reservation_user,hotel.reservation.user,model_hotel_reservation,hotel.group_hotel_user,1,1,1,0
+access_hotel_reservation_line_user,hotel_reservation.line.user,model_hotel_reservation_line,hotel.group_hotel_user,1,1,1,0
+access_hotel_reservation_service_line_user,hotel.reservation.service.line.user,model_hotel_reservation_service_line,hotel.group_hotel_user,1,1,1,0
+access_reservation_cancel_reason_user,hotel.reservation.cancel.reason.user,model_reservation_cancel_reason,hotel.group_hotel_user,1,1,1,0
+access_hotel_reservation_adults_user,access_hotel_reservation_adults_user,model_hotel_reservation_adults,hotel.group_hotel_user,1,0,0,0
+,,,,,,,
+access_hotel_reservation_manager,hotel_reservation.manager,model_hotel_reservation,hotel.group_hotel_manager,1,1,1,1
+access_hotel_reservation_line_manager,hotel_reservation.line.manager,model_hotel_reservation_line,hotel.group_hotel_manager,1,1,1,1
+access_hotel_reservation_service_line_manager,hotel.reservation.service.line.manager,model_hotel_reservation_service_line,hotel.group_hotel_manager,1,1,1,1
+access_hotel_reservation_adults_manager,access_hotel_reservation_adults_manager,model_hotel_reservation_adults,hotel.group_hotel_manager,1,1,1,1
+access_reservation_cancel_reason_manager,hotel.reservation.cancel.reason.manager,model_reservation_cancel_reason,hotel.group_hotel_manager,1,1,1,1

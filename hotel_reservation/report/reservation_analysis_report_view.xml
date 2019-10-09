@@ -1,0 +1,70 @@
+
+<odoo>
+
+        <!-- Pivot View-->
+        <record id="reservation_analysis_report_pivot" model="ir.ui.view">
+            <field name="name">reservation.analysis.report.pivot</field>
+            <field name="model">report.reservation.analysis</field>
+            <field name="arch" type="xml">
+                <pivot string="Reservation Analysis Report" type="pivot" stacked="True">
+                    <field name="total_amount" type="measure"/>
+                    <field name="date" type="row"/>
+                </pivot>
+            </field>
+        </record>
+
+        <!-- search View-->
+        <record id="reservation_analysis_report_search" model="ir.ui.view">
+            <field name="name">Reservation Analysis Report Search</field>
+            <field name="model">report.reservation.analysis</field>
+            <field name="arch" type="xml">
+                <search string="Reservation Analysis Report">
+                    <field name="partner_id"/>
+                    <field name="date"/>
+                    <field name="week"/>
+                    <field name="month" />
+                    <field name="year" />
+
+                    <separator/>
+                    <filter icon="terp-go-year" string="Previous Month" name="month" domain="[('month','=', (context_today() - relativedelta(months=1)).strftime('%%m'))]"/>
+                    <filter icon="terp-go-year" string="This Month" name="month" domain="[('month','=',time.strftime('%%m'))]"/>
+
+                    <group expand="1" string="Group By">
+                        <filter string="Partner" name="partner" context="{'group_by':'partner_id'}"/>
+                        <filter string="Date" name="date" context="{'group_by':'date'}"/>
+                        <filter string="Week" name="week" context="{'group_by':'week'}"/>
+                        <filter string="Month" name="month" context="{'group_by':'month'}"/>
+                        <filter string="Year" name="year" context="{'group_by':'year'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="reservation_analysis_report_action" model="ir.actions.server">
+            <field name="name">Reservation Analysis Report</field>
+            <field name="type">ir.actions.server</field>
+<!--             <field name="search_view_id" ref="reservation_analysis_report_search"/> -->
+            <field name="model_id" ref="hotel_reservation.model_report_reservation_analysis"/>
+            <field name="code">
+env['report.reservation.analysis'].init()
+view_id = env.ref('hotel_reservation.reservation_analysis_report_pivot')
+action = {
+    "type": "ir.actions.act_window",
+    "res_model": 'report.reservation.analysis',
+    "name":"Reservation Analysis Report",
+    "view_mode": "pivot",
+    "target": "current",
+    "view_id": view_id.id,
+}
+             </field>
+         </record>
+
+        <!-- Menu Creation -->
+        <menuitem id="hotel_reservation_analysis_report"
+            name="Reservation Analysis"
+            parent="hotel.hotel_report_menu"
+            action="reservation_analysis_report_action"
+            sequence="1"/>
+
+</odoo>

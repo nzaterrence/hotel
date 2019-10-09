@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+   <!--Hotel Website Login Layout-->
+   <template id="login_layout" inherit_id="web.login_layout" name="Website Login Layout" priority="20">
+      <xpath expr="t" position="replace">
+         <t t-call="website.layout">
+            <div class="oe_website_login_container" t-raw="0" />
+         </t>
+      </xpath>
+   </template>
+   <!--Navigation Bar-->
+   <template id="layout_navigation" inherit_id="website.layout">
+      <xpath expr="//div[@id='wrapwrap']/header" position="attributes">
+         <attribute name="id">hotel-header-custom</attribute>
+      </xpath>
+      <xpath expr="//header" position="before">
+         <!-- Header Area Start -->
+         <header class="header-area sticky">
+            <!-- Top Header Area Start -->
+            <div class="top-header-area">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-6">
+                        <div class="top-header-content">
+                           <a href="#">
+                              <img src="/hotel_website/static/src/image/hotel-icons/envelop.png" width="25" alt="" />
+                              <span>+91 9033472982</span>
+                           </a>
+                           <a href="#">
+                              <img src="/hotel_website/static/src/image/hotel-icons/phone.png" width="25" alt="" />
+                              <span>contact@serpentcs.com</span>
+                           </a>
+                        </div>
+                     </div>
+                     <div class="col-6">
+                        <div class="top-header-content">
+                           <!-- Top Social Area -->
+                           <div class="top-social-area ml-auto">
+                              <a href="#">
+                                 <img src="/hotel_website/static/src/image/hotel-icons/fb.png" width="25" />
+                              </a>
+                              <a href="#">
+                                 <img src="/hotel_website/static/src/image/hotel-icons/twi.png" width="25" />
+                              </a>
+                              <a href="#">
+                                 <img src="/hotel_website/static/src/image/hotel-icons/in.png" width="25" />
+                              </a>
+                              <a href="#">
+                                 <img src="/hotel_website/static/src/image/hotel-icons/pin.png" width="25" />
+                              </a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- Top Header Area End -->
+         </header>
+         <!-- Header Area End -->
+      </xpath>
+   </template>
+   <template id="hotel_website_homepage1" name="Homepage" inherit_id="website.homepage">
+      <xpath expr="//div[@id='wrap']" position="replace">
+         <title>Hotel Management</title>
+         <!-- Welcome Area Start -->
+         <section class="welcome-area">
+            <div class="welcome-slides">
+               <!-- Single Welcome Slide -->
+               <div id="banner-hotel" class="carousel slide" data-ride="carousel">
+              
+                  <!-- The slideshow -->
+                  <div class="carousel-inner">
+                     <div class="carousel-item active">
+                        <div class="single-welcome-slide bg-img bg-overlay" style="background-image: url(/hotel_website/static/src/image/banner-03.jpg);" data-img-url="/hotel_website/static/src/image/banner-03.jpg">
+                           <!-- Welcome Content -->
+                           <div class="welcome-content h-100 mt-130">
+                              <div class="container h-100">
+                                 <div class="row h-100 align-items-center">
+                                    <!-- Welcome Text -->
+                                    <div class="col-12">
+                                       <div class="welcome-text text-center animated animatedFadeInUp fadeInUp">
+                                          <h6>Hotel Website</h6>
+                                          <h2>Welcome To Hotel</h2>
+                                          <a href="#" class="btn hotel-btn">Discover Now</a>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="carousel-item">
+                        <div class="single-welcome-slide bg-img bg-overlay" style="background-image: url(/hotel_website/static/src/image/banner-03.jpg);" data-img-url="/hotel_website/static/src/image/banner-03.jpg">
+                           <!-- Welcome Content -->
+                           <div class="welcome-content h-100 mt-130">
+                              <div class="container h-100">
+                                 <div class="row h-100 align-items-center">
+                                    <!-- Welcome Text -->
+                                    <div class="col-12">
+                                       <div class="welcome-text text-center animated animatedFadeInUp fadeInUp">
+                                          <h6>Hotel Website</h6>
+                                          <h2>Welcome To Hotel</h2>
+                                          <a href="#" class="btn hotel-btn">Discover Now</a>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="carousel-item">
+                        <div class="single-welcome-slide bg-img bg-overlay" style="background-image: url(/hotel_website/static/src/image/banner-03.jpg);" data-img-url="/hotel_website/static/src/image/banner-03.jpg">
+                           <!-- Welcome Content -->
+                           <div class="welcome-content h-100 mt-130">
+                              <div class="container h-100">
+                                 <div class="row h-100 align-items-center">
+                                    <!-- Welcome Text -->
+                                    <div class="col-12">
+                                       <div class="welcome-text text-center animated animatedFadeInUp fadeInUp">
+                                          <h6>Hotel Website</h6>
+                                          <h2>Welcome To Hotel</h2>
+                                          <a href="#" class="btn hotel-btn">Discover Now</a>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <a class="carousel-control-prev" href="#banner-hotel" data-slide="prev">
+                     <span class="carousel-control-prev-icon" />
+                  </a>
+                  <a class="carousel-control-next" href="#banner-hotel" data-slide="next">
+                     <span class="carousel-control-next-icon" />
+                  </a>
+               </div>
+            </div>
+         </section>
+         <section class="hotel-about-area section-padding-30">
+            <!-- Hotel Search Form Area -->
+            <div class="hotel-search-form-area">
+               <div class="container-fluid">
+                  <div class="hotel-search-form">
+                     <form action="/book" method="post">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                        <div class="book-now">
+                           <div class="row justify-content-between align-items-end">
+                              <div class="col-md-2">
+                                <!--  <label for="checkIn">Check In</label>
+                                 <input type="date" class="form-control" id="checkIn" name="checkin-date" placeholder="Check In Date" /> -->
+                                 <div class="input-group date" id="datepickercheckin" data-target-input="nearest">
+                                    <input type="text" class="form-control datepicker-input datepicker" data-target="#datepickercheckin" name="checkin_date" placeholder="Arraival Date"/>
+                                    <span class="input-group-addon" data-target="#datepickercheckin" data-toggle="datepicker">
+                                      <span class="fa fa-calendar"></span>
+                                    </span>
+                                 </div>
+                              </div>
+                              <div class="col-md-2">
+                                <!--  <label for="checkOut">Check Out</label>
+                                 <input type="date" class="form-control" id="checkOut" name="checkout-date" placeholder="Check Out" /> -->
+                                 <div class="input-group date" id="datepickercheckout" data-target-input="nearest">
+                                    <input type="text" class="form-control datepicker-input datepicker" data-target="#datepickercheckout" name="departure_date" placeholder="Departure Date"/>
+                                    <span class="input-group-addon" data-target="#datepickercheckout" data-toggle="datepicker">
+                                      <span class="fa fa-calendar"></span>
+                                    </span>
+                                 </div>
+                              </div>
+                              <div class="col-md-2">
+                                 <!-- <label for="city">City</label> -->
+                                 <select name="city_id" id="city_id" class="form-control selectpicker" data-live-search="true"  data-title="Location">
+                                    <t t-foreach="city_id" t-as="city">
+                                       <option t-esc="city.city_name" />
+                                    </t>
+                                 </select>
+                              </div>
+                              <div class="col-md-2">
+                                 <!-- <label for="room_type">Room Type</label> -->
+                                 <select name="room_type" id="room_type" class="form-control">
+                                    <t t-foreach="room_type" t-as="room">
+                                       <option t-att-value="room.id">
+                                          <t t-esc="room.name" />
+                                       </option>
+                                    </t>
+                                 </select>
+                              </div>
+                              <div class="col-md-1">
+                                 <!-- <label for="adults">Adult</label> -->
+                                <!--  <input id="adults" type="number" value="1" min="1" max="10" class="form-control" /> -->
+                                    <select class="form-control">
+                                         <option>Person</option>
+                                         <option>1</option>
+                                         <option>2</option>
+                                         <option>3</option>
+                                         <option>4</option>
+                                         <option>5</option>
+                                         <option>6</option>
+                                         <option>7</option>
+                                         <option>8</option>
+                                    </select>
+                              </div>
+                             <!--  <div class="col-md-1"> -->
+                                 <!-- <label for="children">Children</label> -->
+                                <!--  <input id="children" type="number" value="0" min="0" max="10" class="form-control" />
+                              </div> -->
+                              <div class="book-now-submit col-md-3">
+                          
+                                <a href="/book">
+                                     <h6>Check Availability<span class="fa fa-arrow-right"/></h6>
+
+                                   </a>
+                       
+                        </div>
+                           </div>
+                        </div>
+                     
+                     </form>
+                  </div>
+               </div>
+            </div>
+            <div class="container mt-30">
+               <div class="welcome-text text-center">
+                  <h2>What Can You do When You Visit Us?</h2>
+               </div>
+               <div class="welcome-text text-center mt-30 ml-150 mr-150 ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non ornare eros. Ut pharetra ornare lorem, sit amet bibendum quam imperdiet ut.</div>
+               <div class="welcome-text text-center mt-30 ml-150 mr-150 fontsize">Duis diam eros, dignissim sed condimentum ac, vehicula nec nisl. Suspendisse condimentum libero tempus, accumsan augue et, varius dui. Morbi justo tortor,tincidunt ornare magna ut, molestie mattis enim. Cras ac justo et augue suscipit euismod vel eget lectus. Proin ve-hicula nunc arcu, pulvinar accumsan.</div>
+               <div class="welcome-text text-center mt-15">
+                  <a href="#">
+                     <h4>What Can You do When You Visit Us?</h4>
+                  </a>
+               </div>
+            </div>
+            <!-- Welcome Area End -->
+         </section>
+         <section class="hotel-service-info">
+            <div class="container mt-30">
+               <div class="align-items-center">
+                  <div>
+                     <!-- Section Heading -->
+                     <div class="section-heading">
+                        <h4>WHAT WE OFFER?</h4>
+                        <h3>Here Are Some Of Our Luxuries</h3>
+                     </div>
+                  </div>
+                  <!--   <div class="col-12 col-lg-6">
+                        <div class="about-us-thumbnail mb-100 wow fadeInUp" data-wow-delay="700ms">
+                            <div class="row no-gutters">
+                                <div class="col-6">
+                                    <div class="single-thumb">
+                                        <img src="hotel_website/static/src/image/16.jpg" alt=""/>
+                                    </div>
+                                    <div class="single-thumb">
+                                        <img src="hotel_website/static/src/image/16.jpg" alt=""/>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="single-thumb">
+                                        <img src="hotel_website/static/src/image/16.jpg" alt=""/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+               </div>
+               <div class="row">
+                  <div class="col-12 col-lg-4 section-padding-100">
+                     <div class="row mb-30">
+                        <div class="col-sm-4 pl-50">
+                           <img src="hotel_website/static/src/image/hotel-icons-03.png" alt="" />
+                        </div>
+                        <div class="col-sm-8 mt-10 text-left">
+                           <h4>Indoor Pool</h4>
+                        </div>
+                     </div>
+                     <!-- Single Service Area -->
+                     <div class="row mb-30">
+                        <div class="col-sm-4 pl-50">
+                           <img src="hotel_website/static/src/image/hotel-icons-04.png" alt="" />
+                        </div>
+                        <div class="col-sm-8 mt-10 text-left">
+                           <h4>Spa &amp; Salon</h4>
+                        </div>
+                     </div>
+                     <!-- Single Service Area -->
+                     <div class="row mb-30">
+                        <div class="col-sm-4 pl-50">
+                           <img src="hotel_website/static/src/image/hotel-icons-05.png" alt="" />
+                        </div>
+                        <div class="col-sm-8 mt-10 text-left">
+                           <h4>Restro Bar</h4>
+                        </div>
+                     </div>
+                     <!-- Single Service Area -->
+                     <div class="row mb-30">
+                        <div class="col-sm-4 pl-50">
+                           <img src="hotel_website/static/src/image/hotel-icons-06.png" alt="" />
+                        </div>
+                        <div class="col-sm-8 mt-10 text-left">
+                           <h4>Fitness Center</h4>
+                        </div>
+                     </div>
+                     <!-- Single Service Area -->
+                     <div class="row mb-30">
+                        <div class="col-sm-4 pl-50">
+                           <img src="hotel_website/static/src/image/hotel-icons-07.png" alt="" />
+                        </div>
+                        <div class="col-sm-8 mt-10 text-left">
+                           <h4>24/7 Butler Service</h4>
+                        </div>
+                     </div>
+                     <!-- Single Service Area -->
+                     <!--  <div class="row mb-30">
+                                <div class="col-sm-4 pl-50">
+                                    <img src="hotel_website/static/src/image/hotel-icons-03.png" alt=""/>
+                                </div>
+                                <div class="col-sm-8 mt-10 text-left">
+                                    <h4>Restaurant</h4>
+                                </div>
+                            </div> -->
+                  </div>
+                  <div class="col-12 col-lg-8">
+                     <div class="about-us-thumbnail mb-100">
+                        <div class="row">
+                           <div class="col-6 pl-50">
+                              <div class="single-thumb">
+                                 <img src="hotel_website/static/src/image/hotel-1.jpg" alt="" />
+                              </div>
+                              <div class="single-thumb">
+                                 <img src="hotel_website/static/src/image/hotel-2.jpg" alt="" />
+                              </div>
+                              <div class="single-thumb">
+                                 <img src="hotel_website/static/src/image/hotel-3.jpg" alt="" />
+                              </div>
+                           </div>
+                           <div class="col-6 pr-50">
+                              <div class="single-thumb">
+                                 <img src="hotel_website/static/src/image/rsz_hotel-5.jpg" alt="" />
+                              </div>
+                              <div class="single-thumb">
+                                 <img src="hotel_website/static/src/image/hotel-4.jpg" alt="" />
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!-- Our Room Area Start -->
+         <section class="hotel-rooms-area">
+            <div class="rooms-slides">
+               <div class="carousel slide pl-50" data-ride="carousel" id="quote-carousel">
+                  <div class="align-items-center">
+                     <div>
+                        <!-- Section Heading -->
+                        <div class="section-heading" >
+                           <h4>WHERE YOU GOTTA STAY ?</h4>
+                           <h3>We Have Special Rooms Designed for Your Comfort</h3>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- Carousel Slides / Quotes -->
+                  <div class="carousel-inner text-center">
+                     <!-- Quote 1 -->
+                     <t t-foreach="room_type" t-as="room">
+                        <div class="carousel-item ">
+                           <!-- Single Room Slide -->
+                           <div class="home-room-info col-md-3">
+                              <div class="room-detail-img">
+                                 <img t-att-src="image_data_uri(room.image_medium)" t-if="room.image_medium" alt="" />
+                              </div>
+                              <h5 class="text-center" t-esc="room.name" />
+                              <div class="ml-15 mb-15 home-room-content">
+                                 <span t-esc="room.description" />
+                              </div>
+
+                              <div class="mb-15">
+                               <a href="/book"><h6 class="fa fa-chevron-right" style="font-size: 14px;"> Explore</h6></a>
+                              </div>
+                           </div>
+                        </div>
+                     </t>
+                  </div>
+                  <!-- Carousel Buttons Next/Prev -->
+                  <a data-slide="prev" href="#quote-carousel" class="carousel-control-prev">
+                     <i class="fa fa-chevron-left" />
+                  </a>
+                  <a data-slide="next" href="#quote-carousel" class="carousel-control-next">
+                     <i class="fa fa-chevron-right" />
+                  </a>
+               </div>
+            </div>
+         </section>
+         <section class="welcome-area">
+            <div class="welcome-slides home-video">
+               <!-- Single Welcome Slide -->
+               <div class="hotel-services bg-img bg-overlay" style="background-image: url(/hotel_website/static/src/image/video_background.png);" data-img-url="/hotel_website/static/src/image/video_background.png">
+                  <!-- Welcome Content -->
+                  <div class="welcome-content h-100">
+                     <div class="container h-100">
+                        <div class="row h-100 align-items-center">
+                           <!-- Welcome Text -->
+                           <div class="col-12">
+                              <div class="welcome-text text-center">
+                                 <h3>
+                                    Experience Our Outstanding
+                                    <br />
+                                    Services
+                                 </h3>
+                                 <a href="#" class="video-btn" data-toggle="modal" data-src="/hotel_website/static/src/image/hotel.mp4" data-target="#video_pop"> <center> <img src="http://www.clipartbest.com/cliparts/9Tp/enR/9TpenRLTE.svg" style="height: 40px;"/> </center></a>
+
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- POPUP -->
+             
+            </div>
+         </section>
+         <!--  <section>
+            <div class="container section-padding-80">
+                <div class="text-center">
+                    <h3>What Out Happy Customers Says About Us</h3>
+                </div>
+                <div class="customer-review">
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
+    volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+    Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros
+    et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.            </div>
+            </div>
+        </section> -->
+         <!-- Testimonials Area Start -->
+         <section class="hotel-testimonials-area mb-50">
+            <div class="container">
+               <div id="testimonials-hotel" class="carousel slide" data-ride="carousel">
+                  <!-- The slideshow -->
+                  <div class="carousel-inner">
+                     <div class="carousel-item active">
+                        <div class="testimonials">
+                           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkSflTI9DIJAstZ8fesrSz70HR8oH9BN_d8w0cjGEtiZyqDcs8" />
+                           <p>"Integer in cursus massa. Curabitur viverra, libero sed eleifend pellentesque, metus quam commodo lorem, ut laoreet ipsum metus ac augue."</p>
+                           <h1>Martin Kovaks</h1>
+                        </div>
+                     </div>
+                     <div class="carousel-item">
+                        <div class="testimonials">
+                           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkSflTI9DIJAstZ8fesrSz70HR8oH9BN_d8w0cjGEtiZyqDcs8" />
+                           <p>"Integer in cursus massa. Curabitur viverra, libero sed eleifend pellentesque, metus quam commodo lorem, ut laoreet ipsum metus ac augue."</p>
+                           <h1>Martin Kovaks</h1>
+                        </div>
+                     </div>
+                     <div class="carousel-item">
+                        <div class="testimonials">
+                           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkSflTI9DIJAstZ8fesrSz70HR8oH9BN_d8w0cjGEtiZyqDcs8" />
+                           <p>"Integer in cursus massa. Curabitur viverra, libero sed eleifend pellentesque, metus quam commodo lorem, ut laoreet ipsum metus ac augue."</p>
+                           <h1>Martin Kovaks</h1>
+                        </div>
+                     </div>
+                  </div>
+                  <a class="carousel-control-prev" href="#testimonials-hotel" data-slide="prev">
+                     <span class="carousel-control-prev-icon" />
+                  </a>
+                  <a class="carousel-control-next" href="#testimonials-hotel" data-slide="next">
+                     <span class="carousel-control-next-icon" />
+                  </a>
+               </div>
+            </div>
+         </section>
+         <div class="modal fade mt-130" id="video_pop" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog" role="document">
+               <div class="modal-content">
+                  <div class="modal-body">
+                     <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                        <span />
+                     </button>
+                     <!-- 16:9 aspect ratio -->
+                     <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="" id="video" allowscriptaccess="always" />
+                     </div>
+                  </div>
+               </div>
+            </div>
+               </div>
+         <!-- Testimonials Area End -->
+      </xpath>
+   </template>
+   <template id="footer_custom" inherit_id="website.layout" name="Footer">
+      <xpath expr="//div[@id='footer']" position="replace">
+         <footer class="footer-area section-padding-80-0">
+            <!-- Main Footer Area -->
+            <div class="main-footer-area">
+               <div class="container">
+                  <div class="row align-items-baseline justify-content-between">
+                     <!-- Single Footer Widget Area -->
+                     <div class="col-md-4">
+                        <div class="single-footer-widget mb-80">
+                           <!-- Footer Logo -->
+                           <a href="#" class="footer-logo">
+                              <img src="/hotel_website/static/src/image/serpent_logo.png" alt="" />
+                           </a>
+                           <h4>+91-903-347-2982</h4>
+                           <span>contact@hotelmgmt.com</span>
+                           <span>301 Siddhraj Zavod, Near KH-0,
+                                    Sargasan cross road, Gandhinagar,
+                                    Gujarat - India.</span>
+                        </div>
+                     </div>
+                     <!-- Single Footer Widget Area -->
+                     <div class="col-md-3">
+                        <div class="single-footer-widget mb-80">
+                           <!-- Widget Title -->
+                           <h5 class="widget-title">Usefull Links</h5>
+                           <!-- Footer Nav -->
+                           <ul class="footer-nav">
+                              <li>
+                                 <a href="#">
+                                    <i class="fa fa-caret-right" />
+                                    Home
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="#">
+                                    <i class="fa fa-caret-right" />
+                                    About Us
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="#">
+                                    <i class="fa fa-caret-right" />
+                                    Book
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="#">
+                                    <i class="fa fa-caret-right" />
+                                    Galary
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="#">
+                                    <i class="fa fa-caret-right" />
+                                    Contact Us
+                                 </a>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <!-- Single Footer Widget Area -->
+                     <div class="col-md-5">
+                        <div class="single-footer-widget mb-80">
+                           <!-- Widget Title -->
+                           <h5 class="widget-title">Subscribe Newsletter</h5>
+                           <span>Subscribe our newsletter gor get notification about new updates.</span>
+                           <!-- Newsletter Form -->
+                           <form action="index.html" class="nl-form">
+                              <input type="email" class="form-control" placeholder="Enter your email..." />
+                              <button type="submit">
+                                 <i class="fa fa-paper-plane" />
+                              </button>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- Copywrite Area -->
+            <div class="container">
+               <div class="copywrite-content">
+                  <div class="row align-items-center">
+                     <div class="col-12 col-md-8">
+                        <!-- Copywrite Text -->
+                        <div class="copywrite-text">
+                           <p>
+                              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                              <i class="fa fa-heart-o" aria-hidden="true" />
+                              by
+                              <a href="https://hotel.com" target="_blank">Hotel Website</a>
+                              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                           </p>
+                        </div>
+                     </div>
+                     <div class="col-12 col-md-4">
+                        <!-- Social Info -->
+                        <div class="social-info">
+                           <a href="#">
+                              <i class="fa fa-facebook" />
+                           </a>
+                           <a href="#">
+                              <i class="fa fa-twitter" />
+                           </a>
+                           <a href="#">
+                              <i class="fa fa-instagram" />
+                           </a>
+                           <a href="#">
+                              <i class="fa fa-linkedin" />
+                           </a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </footer>
+      </xpath>
+   </template>
+   <template id="website.layout_footer_copyright" inherit_id="website.layout" name="Footer Copyright">
+      <xpath expr="//footer" position="inside" />
+   </template>
+</odoo>

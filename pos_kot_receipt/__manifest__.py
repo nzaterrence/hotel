@@ -1,0 +1,26 @@
+# See LICENSE file for full copyright and licensing details.
+{
+    'name': 'Pos Kot Receipt',
+    'version': '12.0.1.0.3',
+    'category': 'Point Of Sale',
+    'sequence': 6,
+    'summary': 'POS Kitchen Order Ticket',
+    'author': 'Serpent Consulting Services Pvt. Ltd.',
+    'maintainer': 'Serpent Consulting Services Pvt. Ltd.',
+    'website': 'https://www.serpentcs.com',
+    'data': [
+            'security/pos_kot_receipt_security.xml',
+            'security/ir.model.access.csv',
+            'view/templates.xml',
+            'view/pos_kot_receipt_view.xml',
+            'view/kitchen_screen_data.xml',
+    ],
+    'depends': ['pos_options_bar'],
+    'qweb': ['static/src/xml/pos_kot_receipt.xml'],
+    'images': ['static/description/pos_kot_receipt.png'],
+    'installable': True,
+    'auto_install': False,
+    'application': False,
+    'price': 29,
+    'currency': 'EUR',
+}

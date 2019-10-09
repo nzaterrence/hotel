@@ -1,0 +1,150 @@
+<odoo>
+	<template id="hotel_book_layout" name="Hotel Book Layout" >
+		<t t-call="website.layout">
+        	    <!-- Breadcrumb Area Start -->
+    <div class="breadcrumb-area bg-img bg-overlay" style="background-image: url(/hotel_website/static/src/image/16.jpg);">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcrumb-content text-center animated animatedFadeInUp fadeInUp">
+                        <h2 class="page-title">Our Room</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center">
+                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Room</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb Area End -->
+
+
+    <!-- Rooms Area Start -->
+    <div class="hotel-rooms-area section-padding-80-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-8">
+                    <!-- Single Room Area -->
+                    <t t-foreach="room_type" t-as="room">
+                        <div class="single-room-area d-flex align-items-center mb-50 active" data-wow-delay="100ms">
+                            <!-- Room Thumbnail -->
+                            <div class="room-thumbnail">
+                                <!-- <img src="/hotel_website/static/src/image/16.jpg" alt=""/> -->
+                                <img t-att-src="image_data_uri(room.image_medium)" t-if="room.image_medium" alt="" />
+                            </div>
+                            <!-- Room Content -->
+                            <div class="room-content">
+                                <h2 t-esc="room.name"></h2>
+                                <h4 t-esc="room.list_price"> <span>/ Day</span></h4>
+                                <div class="room-feature">
+                                    <div  class="row">
+                                    <div class="col-md-6"><h6>Size: <span>30 ft</span></h6></div>
+                                    <div class="col-md-6"><h6>Capacity: <span t-esc="room.capacity"></span></h6></div>
+                                    <div class="col-md-6"><h6>Bed: <span>King beds</span></h6></div>
+                                    <div class="col-md-6"><h6>Services:<span> <t t-foreach="room.room_amenities" t-as="amenities">
+                                       <span t-esc="amenities.name" />
+                                    </t></span></h6></div>
+                                </div>
+                                </div>
+                                <a t-att-href="'/room-detail/%s' % slug(room)" class="btn view-detail-btn">View Details <i class="fa fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </t>
+
+                    <!-- Pagination -->
+                   <!--  <nav class="hotel-pagination mb-100">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Next <i class="fa fa-angle-right"></i></a></li>
+                        </ul>
+                    </nav> -->
+                </div>
+
+                <div class="col-12 col-lg-4">
+                    <!-- Hotel Reservation Area -->
+                    <div class="hotel-reservation--area mb-100">
+                        <form action="#" method="post">
+                            <div class="form-group mb-30">
+                                <label for="checkInDate">Date</label>
+                                <div class="input-daterange" id="datepicker">
+                                    <div class="row no-gutters">
+                                        <div class="col-6">
+                                            <!-- <input type="text" class="input-small form-control" id="checkInDate" name="checkInDate" placeholder="Check In"/> -->
+                                            <label for="checkIn">Check In</label>
+                                <!--  <input type="date" class="form-control" id="checkIn" name="checkin-date" placeholder="Check In" /> -->
+                                <div class="input-group date" id="datepickercheckin" data-target-input="nearest">
+                                    <input type="text" class="form-control datepicker-input datepicker" data-target="#datepickercheckin" name="arrival_date" placeholder="Arraival Date"/>
+                                    <span class="input-group-addon" data-target="#datepickercheckin" data-toggle="datepicker">
+                                      <span class="fa fa-calendar"></span>
+                                    </span>
+                                 </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <!-- <input type="text" class="input-small form-control" name="checkOutDate" placeholder="Check Out"/> -->
+                                                               <label for="checkout">Check Out</label>
+                                 <!-- <input type="date" class="form-control" id="checkOut" name="checkout-date" placeholder="Check Out" /> -->
+                                   <div class="input-group date" id="datepickercheckout" data-target-input="nearest">
+                                    <input type="text" class="form-control datepicker-input datepicker" data-target="#datepickercheckout" name="departure_date" placeholder="Departure Date"/>
+                                    <span class="input-group-addon" data-target="#datepickercheckout" data-toggle="datepicker">
+                                      <span class="fa fa-calendar"></span>
+                                    </span>
+                                 </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mb-30">
+                                <label for="guests">Guests</label>
+                                <div class="row">
+                                    <div class="input-group col-5">
+                                        <select name="adults" id="guests" class="form-control">
+                                            <option value="adults">Adults</option>
+                                            <option value="01">01</option>
+                                            <option value="02">02</option>
+                                            <option value="03">03</option>
+                                            <option value="04">04</option>
+                                            <option value="05">05</option>
+                                            <option value="06">06</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group col-5">
+                                        <select name="children" id="children" class="form-control">
+                                            <option value="children">Children</option>
+                                            <option value="01">01</option>
+                                            <option value="02">02</option>
+                                            <option value="03">03</option>
+                                            <option value="04">04</option>
+                                            <option value="05">05</option>
+                                            <option value="06">06</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+              <!--               <div class="form-group mb-50">
+                                <div class="slider-range">
+                                    <div class="range-price">Max Price: $0 - $3000</div>
+                                    <div data-min="0" data-max="3000" data-unit="$" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="0" data-value-max="3000" data-label-result="Max Price: ">
+                                        <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
+                                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+                                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="form-group">
+                                <button type="submit" class="btn hotel-btn w-100">Check Availablity</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Rooms Area End -->
+    	</t>
+    </template>      
+</odoo>

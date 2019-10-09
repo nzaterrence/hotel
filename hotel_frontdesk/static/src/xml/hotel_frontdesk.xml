@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="hotel_frontdesk_template" xml:space="preserve">
+    <t t-name="hotel_frontdesk.HotelFrontdesk">
+        <div id="content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="frontdesk_filter float-left">
+                            <button class="btn frontdesk_filter_btn btn_day_filter" disabled="">Day</button>
+                            <button class="btn frontdesk_filter_btn btn_week_filter">Week</button>
+                            <button class="btn frontdesk_filter_btn btn_month_filter">Month</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="frontdesk_info float-right">
+                            <span class="label label-assigned">Folio</span>
+                            <span class="label label-reserved">Reserved</span>
+                            <span class="label label-done">Check out</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="frontdesk-container">
+                        <div class="gantt-target"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

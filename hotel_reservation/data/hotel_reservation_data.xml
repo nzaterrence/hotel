@@ -1,0 +1,62 @@
+<odoo>
+    <data>
+
+        <!-- Demo data for hotel reservation--> 
+        <record id="hotel_reservation_0" model="hotel.reservation">
+            <field name="company_id" ref="base.main_company" />
+            <field name="pricelist_id" ref="product.list0" />
+            <field name="partner_id" ref="base.res_partner_2" />
+            <field name="partner_invoice_id" ref="base.res_partner_2" />
+            <field name="partner_shipping_id" ref="base.res_partner_2" />
+            <field eval="&quot;R/00002&quot;" name="reservation_no" />
+        </record> 
+
+         <record id="hotel_reservation_1" model="hotel.reservation">
+            <field name="company_id" ref="base.main_company" />
+            <field name="pricelist_id" ref="product.list0" />
+            <field name="partner_id" ref="base.res_partner_address_2" />
+            <field name="partner_invoice_id" ref="base.res_partner_address_2" />
+            <field name="partner_shipping_id" ref="base.res_partner_address_2" />
+            <field eval="&quot;R/00003&quot;" name="reservation_no" />
+        </record> 
+
+        <!--hotel Reservation Line -->
+        <record id="hotel_reservation_line_0" model="hotel_reservation.line">
+            <field eval="(DateTime.today())" name="checkin" />
+            <field eval="(DateTime.today()+ timedelta(days=1))" name="checkout" />
+            <field name="room_id" ref="hotel.hotel_room_single" />
+            <field name="qty">1</field>
+            <field name="price_unit">100.0</field>
+            <field name="name">Reservation Line1</field>
+            <field name="reservation_id" ref="hotel_reservation_0"/>
+        </record>
+
+        <record id="hotel_reservation_line_1" model="hotel_reservation.line">
+            <field eval="(DateTime.today())" name="checkin" />
+            <field eval="(DateTime.today()+ timedelta(days=1))" name="checkout" />
+            <field name="room_id" ref="hotel.hotel_room_double" />
+            <field name="qty">1</field>
+            <field name="price_unit">200.0</field>
+            <field name="name">Reservation Line2</field>
+            <field name="reservation_id" ref="hotel_reservation_1"/>
+        </record>
+
+        <record id="hotel_reservation_line_2" model="hotel_reservation.line">
+            <field eval="(DateTime.today())" name="checkin" />
+            <field eval="(DateTime.today()+ timedelta(days=1))" name="checkout" />
+            <field name="room_id" ref="hotel.hotel_room_double" />
+            <field name="qty">1</field>
+            <field name="price_unit">200.0</field>
+            <field name="name">Reservation Line3</field>
+            <field name="reservation_id" ref="hotel_reservation_1"/>
+        </record>
+        
+        <!-- Hotel Extra Room charges -->
+<!--         <record id="hotel_extra_room_charge" model="product.product">
+            <field name="name">Extra Room Charge</field>
+            <field name="standard_price">0</field>
+        </record>
+ -->
+
+    </data>
+</odoo>

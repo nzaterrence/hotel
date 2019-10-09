@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='us-ascii'?>
+<odoo>
+    <data>
+        <record id="view_change_room_quantity" model="ir.ui.view">
+            <field name="name">Change Room Quantity</field>
+            <field name="model">hotel.change.room.qty</field>
+            <field name="arch" type="xml">
+                <form string="Update Room Quantity">
+                    <group>
+                        <field name="room_id" readonly="1" widget="selection" />
+                        <field name="new_quantity" />
+                    </group>
+                    <footer>
+                        <button class="btn-primary" name="change_room_qty" string="_Apply" type="object" />
+                        <button class="btn-default" special="cancel" string="_Cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_view_change_room_qty" model="ir.actions.act_window">
+            <field name="name">Update Room Number</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hotel.change.room.qty</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_change_room_quantity" />
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,24 @@
+.checkbox_uncheck {
+    color: #4c4c4c !important;
+    background-color: #e6e6e6 !important;
+    border-color: #adadad !important;
+    padding: 10px !important;
+    text-align: center !important;
+    border-radius: 5px !important;
+    margin: 10px !important;
+    /* cursor: pointer; */
+}
+
+.checkbox_checked {
+    background-color: #7c7bad !important;
+    color: #FFF !important;
+    padding: 10px !important;
+    text-align: center !important;
+    border-radius: 5px !important;
+    margin: 10px !important;
+    /* cursor: pointer; */
+}
+
+.color_filter {
+    cursor: pointer !important;
+}

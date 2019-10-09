@@ -1,0 +1,20 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_category_user,product.category.user,product.model_product_category,hotel.group_hotel_user,1,1,1,0
+access_product_product_user,product.product.user,product.model_product_product,hotel.group_hotel_user,1,1,1,0
+access_hotel_housekeeping_user,hotel.housekeeping.user,model_hotel_housekeeping_status,hotel.group_hotel_user,1,1,1,0
+access_hotel_housekeeping_activities_user,hotel.housekeeping.activities.user,model_hotel_housekeeping_activities,hotel.group_hotel_user,1,1,1,0
+access_product_category_manager,product.category.manager,product.model_product_category,hotel.group_hotel_manager,1,1,1,1
+access_product_product_manager,product.product.manager,product.model_product_product,hotel.group_hotel_manager,1,1,1,1
+access_hotel_housekeeping_manager,hotel.housekeeping.manager,model_hotel_housekeeping_status,hotel.group_hotel_manager,1,1,1,1
+access_hotel_housekeeping_activities_manager,hotel.housekeeping.activities.manager,model_hotel_housekeeping_activities,hotel.group_hotel_manager,1,1,1,1
+access_hotel_housekeeping_jotel_housekeeper,hotel.hotel.housekeeper.manager,model_hotel_housekeeper,hotel.group_hotel_manager,1,1,1,1
+access_hotel_housekeeping_activity,hotelhousekeeping.activity.manager,model_hotel_housekeeping_activity,hotel.group_hotel_manager,1,1,1,1
+access_house_keeping_schedule_user,access_house_keeping_schedule_user,model_house_keeping_schedule,base.group_user,1,0,0,0
+access_hotel_housekeeping_status_log_user,access_hotel_housekeeping_status_log_user,model_hotel_housekeeping_status_log,base.group_user,1,0,0,0
+access_hotel_housekeeping_activity_plan_manager, access.hotel.housekeeping.activity.plan,model_hotel_housekeeping_activity_plan,hotel.group_hotel_manager,1,1,1,1
+access_hotel_housekeeping_manager, access.hotel.housekeping.manager,model_hotel_housekeeping,hotel.group_hotel_manager,1,1,1,1
+access_hotel_housekeeping_user, access.hotel.housekeping.user,model_hotel_housekeeping,hotel.group_hotel_user,1,0,0,0
+access_hotel_housekeeping_activity_plan_line_manager, access.hotel.housekeping.activity.plan.line.manager,model_hotel_housekeeping_activity_plan_line,hotel.group_hotel_manager,1,1,1,1
+access_hotel_housekeeping_activity_plan_line_user, access.hotel.housekeping.activity.plan.line.user,model_hotel_housekeeping_activity_plan_line,hotel.group_hotel_user,1,0,0,0
+access_hotel_housekeeping_status_manager, access.hotel.housekeping.status.manager,model_hotel_housekeeping_status,hotel.group_hotel_manager,1,1,1,1
+access_hotel_housekeeping_status_user, access.hotel.housekeping.status.user,model_hotel_housekeeping_status,hotel.group_hotel_user,1,0,0,0

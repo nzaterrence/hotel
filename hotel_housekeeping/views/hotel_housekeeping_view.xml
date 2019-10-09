@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE xml>
+<odoo>
+
+        <!-- Form view of hotel housekeeping -->
+    <record id="view_hotel_housekeeping_form" model="ir.ui.view">
+        <field name="name">hotel.housekeeping.form</field>
+        <field name="model">hotel.housekeeping</field>
+        <field name="arch" type="xml">
+            <form string="Housekeeping">
+                <header>
+                    <button string="Inspect" name="room_inspect" type="object" class="btn btn-primary" states="cancel" title="Inspect" />
+                    <button string="In Progress" name="room_inprogress" type="object" class="btn btn-primary" states="inspect" title="In Progress" />
+                    <button string="Done" name="room_done" type="object" class="btn btn-primary" states="inprogress"  title="Done"></button>
+                    <button string="Cancel" name="room_cancel" type="object" class="btn btn-primary" states="inprogress,done" title="Cancel"></button>
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <group col="4">
+                        <field name="name" />
+                        <field name="current_date" />
+                        <field name="clean_type" />
+                        <field name="inspector_id" />
+                        <field name="inspect_date_time" />
+                    </group>
+                    <group col="4">
+                        <field name="room_no" options="{'no_create': True,'no_open':True}" />
+                        <field name="room_number_id" options="{'no_create': True,'no_open':True}" />
+                        <field name="quality" attrs="{'invisible':[('state','not in',['clean','done'])]}"/>
+                    </group>
+                    <newline />
+                    <newline />
+                    <separator string="Activity Lines" colspan="4" />
+                    <field name="activity_line_ids" context="{'room_id':room_no, 'today_date':current_date}"
+                        colspan="4" nolabel="1">
+                        <form string="Activity Lines">
+                            <group colspan="4" col="4">
+                                <field name="today_date" />
+                                <field name="activity_name" />
+                                <field name="housekeeper" />
+                                <field name="clean_start_time" />
+                                <field name="clean_end_time" />
+                                <field name="cleaning_time" />
+                            </group>
+                        </form>
+                        <tree string="Activity Lines" editable="buttom">
+                            <field name="activity_name" />
+                            <field name="housekeeper" />
+                            <field name="today_date" />
+                            <field name="clean_start_time" />
+                            <field name="clean_end_time" />
+                            <field name="cleaning_time" />
+                            <field name="state" />
+
+                        </tree>
+                    </field>
+                    <newline />
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree view of hotel housekeeping -->
+    <record id="view_hotel_housekeeping_tree" model="ir.ui.view">
+        <field name="name">hotel.housekeeping.tree</field>
+        <field name="model">hotel.housekeeping</field>
+        <field name="arch" type="xml">
+            <tree string="Housekeeping12">
+                <field name="current_date" />
+                <field name="clean_type" />
+                <field name="room_no" />
+                <field name="room_number_id" />
+                <field name="inspector_id" />
+                <field name="inspect_date_time" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search view of hotel housekeeping -->
+    <record id="view_hotel_housekeeping_search" model="ir.ui.view">
+        <field name="name">hotel.housekeeping.search</field>
+        <field name="model">hotel.housekeeping</field>
+        <field name="arch" type="xml">
+            <search string="Housekeeping">
+                <field name="inspector_id" />
+                <field name="state" />
+                <newline />
+                <group expand="0" string="Group By">
+                    <filter name="room_type" string="Room Type" 
+                        domain="[]" context="{'group_by':'room_no'}" />
+                </group>
+                <filter domain="[('state','=','inspect')]" string="Inspect" name="inspect" />
+            </search>
+        </field>
+    </record>
+
+    <!-- Action for hotel housekeeping -->
+    <record id="open_hotel_housekeeping_form_tree" model="ir.actions.act_window">
+        <field name="name">Housekeeping Services</field>
+        <field name="res_model">hotel.housekeeping</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">search,tree,form</field>
+        <field name="search_view_id" ref="view_hotel_housekeeping_search"/>
+        <field name="context">{'search_default_inspect':1, 'search_default_room_type':1}</field>
+    </record>
+    
+
+    <!-- Tree view of hotel housekeeping status-->
+    <record id="view_hotel_housekeeping_status_tree" model="ir.ui.view">
+        <field name="name">hotel.housekeeping.status.tree</field>
+        <field name="model">hotel.housekeeping.status</field>
+        <field name="arch" type="xml">
+            <tree string="Hotel Housekeeping Status" create="false" delete="false"
+                    editable="top">
+                <field name="room_number_id" readonly="1"/>
+                <field name="room_id" readonly="1"/>
+                <field name="state" />
+                <field name="room_status"/>
+                <field name="remarks"/>
+                <field name="housekeeper_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search view of hotel housekeeping status -->
+    <record id="view_hotel_housekeeping_status_search" model="ir.ui.view">
+        <field name="name">hotel.housekeeping.status.search</field>
+        <field name="model">hotel.housekeeping.status</field>
+        <field name="arch" type="xml">
+            <search string="Housekeeping Status">
+                <group expand="0" string="Group By">
+                    <filter name="room_type" string="Room Type" 
+                        domain="[]" context="{'group_by':'room_id'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+    
+    <record id="server_actions_hotel_housekeeping_status" model="ir.actions.server">
+        <field name="sequence" eval="5"/>
+        <field name="state">code</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="model_hotel_housekeeping_status"/>
+        <field name="code">action = model.open_housekeeping_status()</field>
+        <!-- <field name="condition">True</field> -->
+        <field name="search_view_id" ref="view_hotel_housekeeping_status_search"/>
+        <field name="name">Housekeeping Status</field>
+    </record>
+
+    <menuitem id="menu_hotel_housekeeping" name="Housekeeping" parent="hotel.hotel_management_menu"
+              sequence="2"/>
+
+    <menuitem name="Housekeeping Services" id="menu_open_hotel_housekeeping_form_tree"
+        action="open_hotel_housekeeping_form_tree" parent="menu_hotel_housekeeping"
+        sequence="1" />
+    
+    <menuitem id="menu_housekeeping_status" action="server_actions_hotel_housekeeping_status"
+            parent="menu_hotel_housekeeping" sequence="20"
+            groups="hotel.group_hotel_manager,hotel.group_hotel_user"/>
+
+    <menuitem id="menu_hotel_housekeeping_activity" name="Activity"
+        parent="hotel.hotel_configuration_menu" sequence="2"
+        groups="hotel.group_hotel_manager"/>
+<!--     <menuitem id="menu_action_hotel_housekeeping_activity_type_view_form" -->
+<!--         name="Activity Types" action="action_hotel_housekeeping_activity_type_view_form" -->
+<!--         parent="menu_hotel_housekeeping_activity" sequence="12" -->
+<!--         groups="hotel.group_hotel_manager"/> -->
+
+    <!-- Activity -->
+    <!-- Form view of hotel activity -->
+    <record id="view_hotel_housekeeping_activity_form" model="ir.ui.view">
+        <field name="name">hotel.housekeeping.activity.form</field>
+        <field name="model">hotel.housekeeping.activity</field>
+        <field name="arch" type="xml">
+            <form string="Housekeeping Activity">
+                <sheet>
+                    <group>
+                        <field name="name" string="Activity Name" required="1" />
+                        <field name="categ_id" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search view of hotel activity -->
+    <record id="view_hotel_housekeeping_activity_search" model="ir.ui.view">
+        <field name="name">hotel.housekeeping.activity.search</field>
+        <field name="model">hotel.housekeeping.activity</field>
+        <field name="arch" type="xml">
+            <search string="Housekeeping Activity">
+                <field name="name" />
+                <field name="categ_id" />
+                <newline />
+                <group expand="0" string="Group By...">
+                    <filter name="categ_id" string="Catagory" icon="terp-stock_symbol-selection"
+                        domain="[]" context="{'group_by':'categ_id'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Tree view of hotel activity -->
+    <record id="view_hotel_housekeeping_activity_tree" model="ir.ui.view">
+        <field name="name">hotel.housekeeping.activity.tree</field>
+        <field name="model">hotel.housekeeping.activity</field>
+        <field name="arch" type="xml">
+            <tree string="Housekeeping Activity" editable="top">
+                <field name="name" />
+                <field name="categ_id" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action of hotel activity -->
+    <record id="action_hotel_housekeeping_activity" model="ir.actions.act_window">
+        <field name="name">Housekeeping Activities</field>
+        <field name="res_model">hotel.housekeeping.activity</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'default_isactivitytype':1}</field>
+    </record>
+
+    <menuitem id="menu_open_hotel_housekeeping_activity_form" name="Activities"
+        action="action_hotel_housekeeping_activity" parent="menu_hotel_housekeeping_activity"
+        groups="hotel.group_hotel_manager"/>
+
+    <!---Form View of Housekeeping Activity Plan-->
+    <record id="hotel_housekeeping_activity_plan_form_view" model="ir.ui.view">
+        <field name="name">hotel.housekeeping.activity.plan.form</field>
+        <field name="model">hotel.housekeeping.activity.plan</field>
+        <field name="arch" type="xml">
+            <form string="Housekeeping Activity Plan">
+                <sheet>
+                    <div class="oe_button_box" name="button_box" groups="base.group_user">
+                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                            <h1><field name="name" placeholder="Activity Name"/></h1>
+                    </div>
+                    <group col="4">
+                        <field name="activity_plan" />
+                        <field name="user_id" />
+                    </group>
+                    <separator string="Service Lines" colspan="4"/>
+                        <field name="activity_line_ids" >
+                             <tree editable="bottom" string="Services">
+                                <field name="activity_id" />
+                                <field name="name"/>
+                             </tree>
+                        </field>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!---Tree View of Housekeeping Activity Plan-->
+    <record id="hotel_housekeeping_activity_plan_tree_view" model="ir.ui.view">
+        <field name="name">hotel.housekeeping.activity.plan.tree</field>
+        <field name="model">hotel.housekeeping.activity.plan</field>
+        <field name="arch" type="xml">
+            <tree string="Housekeeping Activity Plan">
+                <field name="name" />
+                <field name="activity_plan" />
+                <field name="user_id" />
+                <field name="active" />
+            </tree>
+        </field>
+    </record>
+
+    <!--Action View of Housekeeping Activity Plan-->
+    <record id="action_hotel_housekeeping_activity_plan" model="ir.actions.act_window">
+        <field name="name">Housekeeping Activity Plan</field>
+        <field name="res_model">hotel.housekeeping.activity.plan</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_housekeeping_activity_plan" name="Housekeeping Activity Plan"
+        action="action_hotel_housekeeping_activity_plan" parent="menu_hotel_housekeeping" sequence="20"
+        groups="hotel.group_hotel_manager"/>
+
+</odoo>

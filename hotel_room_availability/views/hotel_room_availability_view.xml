@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Room Avaliablity -->
+    <record id="view_room_availability_form" model="ir.ui.view">
+        <field name="name">room.availability.form</field>
+        <field name="model">room.availability</field>
+        <field name="arch" type="xml">
+            <form string="Hotel Room Availability" create="false" delete="false">
+                <header>
+                    <button string="Update Room Availablity" type="action"
+                            name="%(action_update_available_room_qty)d"/>
+                </header>
+                <div class="oe_title">
+                    <label for="company_id" class="oe_edit_only"/>
+                    <h1>
+                        <field name="company_id" class="oe_inline" options="{'no_open':True}"/>
+                    </h1>
+                </div>
+                <group>
+                    <label for="date_from" string="Period"/>
+                    <div class="oe_inline"><field name="date_from" class="oe_inline"/> to <field name="date_to" class="oe_inline"/></div>
+                </group>
+                <field name="rooms_ids" widget="many2many_checkboxes" nolabel="1" invisible="1"/>
+                <notebook>
+                    <!-- <page string="Summary">
+                        <widget name="RoomAvailabilityView"/>
+                    </page> -->
+                     <page string="Room Availibility Details" invisible="0">
+                        <field name="room_availability_ids"  widget="RoomAvailabilityView">
+                            <tree name="room_availability" editable="bottom">
+                                <field name="date"/>
+                                <field name="room_category_id"/>
+                                <field name="company_id" invisible="1"/>
+                                <field name="room_qty"/>
+                                <field name="room_cost_price"/>
+                                <field name="close"/>
+                            </tree>
+                            <form name="room_availability">
+                                <group>
+                                    <group>
+                                        <field name="room_qty" required="1"/>
+                                        <field name="company_id"/>
+                                        <field name="date" required="1"/>
+                                    </group>
+                                    <group>
+                                        <field name="room_category_id" required="1"/>
+                                        <field name="room_cost_price"/>
+                                        <field name="room_availability_id" invisible="1"/>
+                                        <field name="room_availability_id_computed" invisible="1"/>
+                                    </group>
+                                </group>
+                            </form>
+                        </field>
+                    </page>
+                </notebook>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_room_availability_tree" model="ir.ui.view">
+        <field name="name">room.availability.tree</field>
+        <field name="model">room.availability</field>
+        <field name="arch" type="xml">
+            <tree string="Room Availability">
+                <field name="company_id"/>
+                <field name="date_from"/>
+                <field name="date_to"/>
+            </tree>
+        </field>
+    </record>
+
+<!--     <record id="action_room_availability" model="ir.actions.act_window">
+        <field name="name">Room Availability</field>
+        <field name="res_model">room.availability</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record> -->
+
+    <record id="ir_actions_server_room_availability" model="ir.actions.server">
+        <field name="sequence" eval="5"/>
+        <field name="state">code</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="model_hotel_room_availability_sheet_open"/>
+        <field name="code">action = model.open_room_availability_sheet()</field>
+        <!-- <field name="condition">True</field> -->
+        <field name="name">Room Availability</field>
+    </record>
+
+    <menuitem id="menu_room_summary"
+              name="Room Summary"
+              sequence="3"
+              parent="hotel.hotel_management_menu"
+              groups="hotel.group_hotel_manager"/>
+
+    <menuitem id="menu_room_availability"
+              name="Availability"
+              action="ir_actions_server_room_availability"
+              sequence="1"
+              parent="menu_room_summary"
+              groups="hotel.group_hotel_manager"/>
+
+</odoo>
